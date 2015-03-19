@@ -2,5 +2,5 @@
 var x： integer;
 {
 System.out.println("Hello World!");
-x = inputbox();
+x = inputbox()
 }
