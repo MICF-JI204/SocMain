@@ -1,0 +1,2 @@
+# SocMain
+Main system structure
