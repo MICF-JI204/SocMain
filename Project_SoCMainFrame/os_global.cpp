@@ -4,3 +4,5 @@
 #include "ardos.h"
 
 struct OS_Status os_status;
+
+Event_List event_list;

@@ -18,5 +18,6 @@ extern int os_init();
 extern int os_run();
 extern int os_add_tasklist();
 extern int os_remove_tasklist();
+extern Event_List event_list();
 
 #endif

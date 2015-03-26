@@ -25,11 +25,11 @@ int os_run(){//the main cycle of the system
 	for(i=0;i<os_status.task_list_count;i++){//Go Through Task List
 		do{
 			tevent=(*(os_status.tlist[i])).getTask(os.status.systime);
-			//==========! EventList.addEvent(tevent);
+			event_list.addEvent(tevent);
 		}while(tevent!=NULL);
 	}
 	return 0;
-	//==============! ExcuteEvent();
+	event_list.Execute_Event():
 }
 
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
