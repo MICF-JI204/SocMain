@@ -10,12 +10,24 @@
   (Multithresding)
 */
 
+Task_List mlist; //instantiate a mission list
+
 int os_init(){
   
   return 0;
 }
 
-int os_run(){
-	//the main cycle of the system.
+int os_run(){//the main cycle of the system
+	os_status.systime=millis();//Acquire System Time
 	
+	return 0;
 }
+
+int os_add_task_list(){
+	return 0;
+}
+
+int os_remove_task_list(){
+	return 0;
+}
+
