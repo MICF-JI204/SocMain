@@ -52,11 +52,14 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 }
 
 int os_remove_task_list(byte listnum){
+	if(os_status.task_list[listnum]==NULL) return ERR_REMOVE_EMPTY_LIST;
 	(*((*os_status.task_list[listnum]).disposeFunc))();
 	//Try Disposing the functions
 	os_status.task_list[listnum]=os_status.task_list[os_status.task_list_count]; 
-	//Moving Foward the last 
+	//Moving Foward the last list
 	os_status.taks_list_count--;
+	os_status.task_list[os_status.task_list_count]=NULL;
+	//Dispose the list
 	return 0;
 }
 
