@@ -2,6 +2,7 @@
 #define __Ardos_h__
 
 #include "Task_list.h"
+#include "Event_list.h"
 
 #define MAX_TASK_LIST 10 // Maximum 10 task lists
 #define Max_TASK 10   // Maximum 10 tasks in EACH list
