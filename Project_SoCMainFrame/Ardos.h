@@ -17,7 +17,7 @@ struct OS_Status{
 };
 				
 extern struct OS_Status os_status;
-extern char errptr
+extern char errptr;
 
 extern int os_init();
 extern int os_run();
