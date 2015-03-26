@@ -3,7 +3,8 @@
 
 class Task_List{
 	public:
-	  int getTask();
+	  int getTask(int systime); 
+	  //Returning a pointer containing necceary arguments for an event
 	  int addTask();
 	  int (*disposeFunc)();
 	private:

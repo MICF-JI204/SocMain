@@ -10,7 +10,7 @@
   (Multithresding)
 */
 
-Task_List mlist; //instantiate a mission list
+Task_List* tlist[10]; //instantiate a mission list
 
 int os_init(){
   
@@ -19,7 +19,9 @@ int os_init(){
 
 int os_run(){//the main cycle of the system
 	os_status.systime=millis();//Acquire System Time
-	
+	for(i=0;i<os_status.task_list_count;i++){//Go Through Task List
+		(*tlist[i]).getTask(os.status.systime);
+	}
 	return 0;
 }
 
