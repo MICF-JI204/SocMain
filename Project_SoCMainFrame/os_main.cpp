@@ -10,7 +10,7 @@
   (Multithresding)
 */
 
-Task_List* tlist[10]; //instantiate a mission list
+
 
 
 int os_init(){//Initialization process of the system
@@ -24,7 +24,7 @@ int os_run(){//the main cycle of the system
 	int* tevent=NULL; 
 	for(i=0;i<os_status.task_list_count;i++){//Go Through Task List
 		do{
-			tevent=(*tlist[i]).getTask(os.status.systime);
+			tevent=(*(os_status.tlist[i])).getTask(os.status.systime);
 			//==========! EventList.addEvent(tevent);
 		}while(tevent!=NULL);
 	}
@@ -32,7 +32,9 @@ int os_run(){//the main cycle of the system
 	//==============! ExcuteEvent();
 }
 
-int os_add_task_list(){
+int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
+	os_status.task_list_count++;
+	os_status.task_list[os_status.tasklist_count]=ntask_list;
 	return 0;
 }
 
