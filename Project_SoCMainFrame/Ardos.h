@@ -9,6 +9,7 @@
 struct OS_Status{
 	int systime; //System Time in milliseconds
 	char task_list_count;// Number of current task lists
+	Task_List* tlist[10]; //instantiate a mission list
 };
 				
 extern struct OS_Status os_status;
