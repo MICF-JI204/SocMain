@@ -3,6 +3,7 @@
 
 #include "Task_list.h"
 #include "Event_list.h"
+#include "Debug.h"
 
 #define byte unsigned char
 
