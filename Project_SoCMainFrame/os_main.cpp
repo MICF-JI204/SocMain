@@ -22,11 +22,18 @@ int os_run(){//the main cycle of the system
 	os_status.systime=millis();//Acquire System Time
 	
 	int* tevent=NULL; 
-	for(i=0;i<os_status.task_list_count;i++){//Go Through Task List
-		do{
+	for(i=0;i<os_status.task_list_count;i++)
+	{//Go Through Task List
+
+		do
+		{
+			
 			tevent=(*(os_status.tlist[i])).getTask(os.status.systime);
 			event_list.addEvent(tevent);
-		}while(tevent!=NULL);
+			
+		}
+		while(tevent!=NULL);
+		
 	}
 	return 0;
 	event_list.Execute_Event():
