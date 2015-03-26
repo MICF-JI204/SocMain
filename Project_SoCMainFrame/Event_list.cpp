@@ -12,7 +12,7 @@ Event_list::Add_event() //Add a couple of events
 	
 }
 
-Event_list::Exacte_event()
+Event_list::Exacute_event()
 {
 	
 	
