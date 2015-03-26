@@ -27,10 +27,14 @@ int os_run(){//the main cycle of the system
 
 		do
 		{
-			
 			tevent=(*(os_status.tlist[i])).getTask(os.status.systime);
-			event_list.addEvent(tevent);
-			
+			if(tevent==ERRPTR)//No more Tasks In a task list
+			{
+			   os_remove_task_list(i);//Dispose Number i Task
+			}else
+			{
+				event_list.addEvent(tevent);
+			}
 		}
 		while(tevent!=NULL);
 		
@@ -40,12 +44,19 @@ int os_run(){//the main cycle of the system
 }
 
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
+    if(os_status.tasklist_count==MAX_TASK_LIST-1) return ERR_LIST_TASK_LIST_OVERFLOW; 
+	//if no more space in the list of task_list
 	os_status.task_list_count++;
 	os_status.task_list[os_status.tasklist_count]=ntask_list;
 	return 0;
 }
 
-int os_remove_task_list(){
+int os_remove_task_list(byte listnum){
+	(*((*os_status.task_list[listnum]).disposeFunc))();
+	//Try Disposing the functions
+	os_status.task_list[listnum]=os_status.task_list[os_status.task_list_count]; 
+	//Moving Foward the last 
+	os_status.taks_list_count--;
 	return 0;
 }
 

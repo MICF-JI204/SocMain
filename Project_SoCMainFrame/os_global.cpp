@@ -7,4 +7,4 @@ struct OS_Status os_status;
 
 Event_List event_list;
 
-int errptr -1;
+char errptr -1;
