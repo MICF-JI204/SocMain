@@ -12,17 +12,24 @@
 
 Task_List* tlist[10]; //instantiate a mission list
 
-int os_init(){
+
+int os_init(){//Initialization process of the system
   
   return 0;
 }
 
 int os_run(){//the main cycle of the system
 	os_status.systime=millis();//Acquire System Time
+	
+	int* tevent=NULL; 
 	for(i=0;i<os_status.task_list_count;i++){//Go Through Task List
-		(*tlist[i]).getTask(os.status.systime);
+		do{
+			tevent=(*tlist[i]).getTask(os.status.systime);
+			//==========! EventList.addEvent(tevent);
+		}while(tevent!=NULL);
 	}
 	return 0;
+	//==============! ExcuteEvent();
 }
 
 int os_add_task_list(){
