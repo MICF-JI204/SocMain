@@ -3,8 +3,9 @@
 
 struct Event
 {
-	// P  OP  Para1-4
-	
+	unsigned char priority;
+	unsigned char operation;
+	int part1,part2,part3,part4;
 };
 
 class Event_List
@@ -17,8 +18,9 @@ class Event_List
 	private:
 		//unsigned char t_count;
 		//unsigned char t_pointer;
-		struct Event list[100];
-	
+		Event list[50];
+		unsigned char Num;
+		
 };
 
 #endif
