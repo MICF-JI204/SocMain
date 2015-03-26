@@ -6,6 +6,7 @@
 
 #define MAX_TASK_LIST 10 // Maximum 10 task lists
 #define Max_TASK 10   // Maximum 10 tasks in EACH list
+#define ERRPTR (&errptr) // 
 
 struct OS_Status{
 	int systime; //System Time in milliseconds
