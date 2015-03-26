@@ -1,7 +1,11 @@
 #ifndef __Event_list_h__
 #define __Event_list_h__
 
-struct 
+struct Event
+{
+	// P  OP  Para1-4
+	
+};
 
 class Event_List
 {
@@ -13,8 +17,7 @@ class Event_List
 	private:
 		//unsigned char t_count;
 		//unsigned char t_pointer;
-		int Level[20];
-		int 
+		struct Event list[100];
 	
 };
 
