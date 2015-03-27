@@ -7,8 +7,7 @@ Header File for debugging purpose
 #define ERR_LIST_TASK_LIST_OVERFLOW 0xf0 //overflow of list of task lists
 #define ERR_TASK_LIST_OVERFLOW 0xf1
 #define ERR_EVENT_LIST_OVERFLOW 0xf2
-#define ERR_REMOVE_EMPTY_LIST 0xf3
-#define ERR_TASK_LIST_DONE 0x00
+#deifne ERR_REMOVE_EMPTY_LIST 0xf3
 
 
 

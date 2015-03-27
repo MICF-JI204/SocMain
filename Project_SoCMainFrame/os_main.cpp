@@ -46,27 +46,15 @@ int os_run(){//the main cycle of the system
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
     if(os_status.tasklist_count==MAX_TASK_LIST-1) return ERR_LIST_TASK_LIST_OVERFLOW; 
 	//if no more space in the list of task_list
-	os_status.task_list[os_status.tasklist_count]=ntask_list;	
-	
-	
-	//Initialize the tasklist for further use
-	ntask_list->t_pointer=0;
-	(ntask_list->task[0]).time_set=os_status.systime+(ntask_list->task[i]).time_step
-	//First term = Last term + time step
-	for(i=1;i < (ntask_list->t_count);i++){
-		(ntask_list->task[i]).time_set=(ntask_list->task[i-1]).time_set+(ntask_list->task[i]).time_step;
-	}//This term = Last term + time step
-	
-	
 	os_status.task_list_count++;
+	os_status.task_list[os_status.tasklist_count]=ntask_list;
 	return 0;
 }
 
-int os_remove_task_list(byte listnum,byte err_num){
+int os_remove_task_list(byte listnum){
 	if(os_status.task_list[listnum]==NULL) return ERR_REMOVE_EMPTY_LIST;
-	int (*tfunpt)(byte)=(*os_status.task_list[listnum]).disposeFunc;
-	if(tfuncpt!=NULL)(*tfunpt)(err_num);
-	//Try Disposing the functions,Make Sure Not NULL!!
+	(*((*os_status.task_list[listnum]).disposeFunc))();
+	//Try Disposing the functions
 	os_status.task_list[listnum]=os_status.task_list[os_status.task_list_count]; 
 	//Moving Foward the last list
 	os_status.taks_list_count--;
