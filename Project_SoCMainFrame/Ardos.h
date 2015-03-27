@@ -8,7 +8,7 @@
 #define byte unsigned char
 
 #define MAX_TASK_LIST 10 // Maximum 10 task lists
-#define Max_TASK 10   // Maximum 10 tasks in EACH list
+#define Max_TASK 5   // Maximum 5 tasks in EACH list
 #define ERRPTR (void*)(&errptr) // Error Pointer, Define for using as a constant
 
 struct OS_Status{
