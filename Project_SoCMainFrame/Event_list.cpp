@@ -1,6 +1,6 @@
 #include "Ardos.h"
 
-Event_List::Event_List()
+Event_List::Event_List() // initialization
 {
 	for (int i=0; i<MAXEVENTNUM; i++)
 	{
@@ -19,32 +19,32 @@ Event_List::Event_List()
 	
 }
 
-int Event_List::Add_Event(struct Event* AddOne) //Add 1 event
+int Event_List::Add_Event(struct Event* AddOne) //Add one event
 {
-	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW;
+	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW; //
 	list[Num].priority=AddOne->priority;
 	list[Num].operation=AddOne->operation;
 	list[Num].para[0]=AddOne->para[0];
 	list[Num].para[1]=AddOne->para[1];
-	Num++;
+	Num++;                              // one more event
 		
 	return 0;	
 }
 
-int Event_List::Add_Event(byte a,byte b,int c,int d); 
+int Event_List::Add_Event(byte a,byte b,int c,int d);  // directly add one event using data not a pointer 
 {
 	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW;
 	list[Num].priority=a;
 	list[Num].operation=b;
 	list[Num].para[0]=c;
 	list[Num].para[1]=d;
-	Num++;
+	Num++;					// one more event
 		
 	return 0;	
 }
 }
 
-int Event_list::Exacute_event()
+int Event_list::Execute_event()
 {
 	if (Num==0) return 0;
 	
@@ -59,23 +59,23 @@ int Event_list::Exacute_event()
 				swap=list[i];
 				list[i]=list[j];
 				list[j]=swap;
-			}
+			}												//make it in order of priority
 			
 	byte Mark;
 	Mark=list[Num-1].priority;
 	
-	while ( (Num>0) && (Mark==list[Num-1].priority) )
+	while ( (Num>0) && (Mark==list[Num-1].priority) )      // for all events of the same priority
 	{
 		
 		j=0;
 		while ( (j<opNum) && (list_op[j].op_num!=list[Num-1].operation) )
-			j++;
+			j++;											// finding the matching operation
 		
-		if (j==opNum) return ERR_EVENT_NOT_REGISTED;
+		if (j==opNum) return ERR_EVENT_NOT_REGISTED;		// no operation found here 
 		
-		list_op[j].fp(list[Num-1].para[1],list[Num-1].para2);
+		list_op[j].fp(list[Num-1].para[1],list[Num-1].para2);  // execute the operation
 		
-		memset(list[Num-1],sizeof(list[Num-1]),0);
+		memset(list[Num-1],sizeof(list[Num-1]),0);			// delete the event
 		Num--;
 	}
 }
@@ -86,15 +86,15 @@ int Event_List::Regist_Event(int (fun_add*) (int para1,int para2), byte opera)
 	
 	int i,j;
 	for (i=0; i<opNum; i++)
-		if (opera==list_op[i].op_num) break;
+		if (opera==list_op[i].op_num) break;		// check if there is a operation registed before but occupied the same button
 	
 	if (opera==list_op[i].op_num)
 	{
-		list_op[i].fp=fun_add;
+		list_op[i].fp=fun_add;				// there is, then just change the pointer of the function
 	};
 	else
 	{
-		list_op[opNum].op_num=opera;
+		list_op[opNum].op_num=opera;		// create a new one
 		list_op[opNum].fp=fun_add;
 		opNum++;
 	};

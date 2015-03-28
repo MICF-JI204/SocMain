@@ -1,8 +1,8 @@
 #ifndef __Event_list_h__
 #define __Event_list_h__
 
-#define MAXEVENTNUM 20
-#define MAXOPNUM 50
+#define MAXEVENTNUM 20   // maximum of the event list
+#define MAXOPNUM 50		// maximum of the operation list
 
 struct Event
 {
@@ -11,7 +11,7 @@ struct Event
 	int para[2];
 };
 
-struct oper
+struct oper				//struct of a operation 
 {
 	byte op_num;
 	int (fp*) (int para1, int para2);
@@ -23,14 +23,14 @@ class Event_List
 		int Add_Event(struct Event* AddOne);     // here is the pointer;
 		int Add_Event(byte a,byte b,int c,int d);  // here is the exact data not the pointer
 		int Execute_Event(); // Execute One Event
-		int Regist_Event(int (fun_add*) (int para1,int para2), byte opera);//
+		int Regist_Event(int (fun_add*) (int para1,int para2), byte opera);// regist an event 
 		Event_List();
 		
 	private:
-		struct Event list[MAXEVENTNUM];
-		byte Num;
-		struct oper list_op[MAXOPNUM];
-		byte opNum;
+		struct Event list[MAXEVENTNUM];			// list of the event--> list
+		byte Num;								// number of the entries of the list
+		struct oper list_op[MAXOPNUM];			// list of the operation--> list_op
+		byte opNum;								// number of the entries of the list_op
 
 };
 
