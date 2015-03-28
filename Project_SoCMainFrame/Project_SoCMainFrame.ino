@@ -1,6 +1,6 @@
 #include "Ardos.h"
 void setup() {
-	os_init():
+	os_init();
 }
 
 void loop() {

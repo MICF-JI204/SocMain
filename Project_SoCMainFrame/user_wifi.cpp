@@ -1,25 +1,24 @@
 #include "Ardos.h"
 
-ESP_01 wifi_com;//Firstly, Define your module
+ESP_01 wifi_com();//Firstly, Define your module
 Task_List task_list_wifi;
 //Define however amount of task lists you want 
 //Task_List task_list_wifi2;
 //Task_List task_list_wifi3;
 //.....
 //As Many As You Want, Initialize them below
-ESP_01::ESP01(){
-	os_add_lib_init(&init); // Add Initialization Function
+ESP_01::ESP_01(){
+	os_add_lib_init((ESP_01::Init)); // Add Initialization Function
 	return;
 }
 
 int ESP_01::Init(){//The Initialization of this library
 	
 	//Initialize the class 
-    for(int i=0;i<BUFFER_SIZE;i++)buffer[i]=0x0;
-    buffer_ptr=0; 
+    for(int i=0;i<WIFI_BUFFER_SIZE;i++)buffer[i]=0x0;
 	
 	//Associate Operation With Functions using os_regsit_event
-	os_regist_event(OP_CHECK_WIFI,GetMsg);
+	os_regist_event(OP_CHECK_WIFI,Get_Msg);
 	
 	//Generate Neccesary Task List
 	//Each Task Must Have 5 arguments
@@ -64,7 +63,7 @@ int ESP_01::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETER
 bool ESP_01::Check_Sum(){
   byte sum = 0;
   for(i=0;i<WIFI_BUFFER_SIZE-1;i++)sum+=(byte)buffer[i];//checksum
-  return (sum == buffer[BUFFER_SIZE-1]]);// return checksum result
+  return (sum == buffer[WIFI_BUFFER_SIZE-1]]);// return checksum result
 }
 
 int ESP_01::Distribute_Msg(){

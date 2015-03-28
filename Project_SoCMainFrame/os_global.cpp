@@ -15,4 +15,4 @@ byte task_list_count=0;	// Number of current task lists
 int (*to_init[MAX_INIT_LIB])()={NULL};//libs to init after initialization
 byte lib_init_count=0;	//how many inits?
 
-char errptr=-1;
+struct Task errptr={0,0,{0,0},0,0};

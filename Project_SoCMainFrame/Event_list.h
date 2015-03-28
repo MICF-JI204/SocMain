@@ -22,7 +22,7 @@ struct oper				//struct of a operation
 class Event_List
 {
 	public:
-		int Add_Event(struct Event *AddOne);     // here is the pointer;
+		int Add_Event(struct Task *AddOne);     // here is the pointer;
 		int Add_Event(byte a,byte b,int c,int d);  // here is the exact data not the pointer
 		int Execute_Event(); // Execute One Event
 		int Regist_Event(byte opera,int (*fun_add) (int para1,int para2));// regist an event 

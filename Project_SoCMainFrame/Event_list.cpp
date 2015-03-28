@@ -19,7 +19,7 @@ Event_List::Event_List() // initialization
 	
 }
 
-int Event_List::Add_Event(struct Event* AddOne) //Add one event
+int Event_List::Add_Event(struct Task* AddOne) //Add one event
 {
 	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW; //
 	list[Num].priority=AddOne->priority;

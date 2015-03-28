@@ -18,16 +18,16 @@
 class ESP_01{
 	public:
 		ESP_01();   //Must have, In construction, regist initialization function
-		int Init(); //Must have, This is initializa function 
+		static int Init(); //Must have, This is initializa function 
 		            // It can not be CAN be blocking
 		            //Functions Below cannot be blocking, 
 		            //i.e. shouldn't contain a total delay() longer than 5ms
 		int Get_Msg(int,int);//Try Obtaining a(multiple) Wifi Command(s)
-		int DisposeFunc1(int);//Dispose function for task list 1
+		static int DisposeFunc1(int);//Dispose function for task list 1
 		                      //The argument gives the reason for its disposal
 							  //Defined in debug.h
 	private:
-	    int buffer[WIFI_BUFFER_SIZE];
+	    static int buffer[WIFI_BUFFER_SIZE];
 		//byte buffer_ptr;//buffer counter
 		bool Check_Sum();//Check the buffer whether it is valid
 		int Distribute_Msg();//Turn Msg Into Events/System Calls
