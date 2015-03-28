@@ -13,7 +13,7 @@ Event_List::Event_List()
 	for (int i=0; i<MAXOPNUM; i++)
 	{
 		list_op[i].op_num=0;
-		list_op[i].fp=null;
+		list_op[i].fp=NULL;
 	}
 	opNum=0;
 	
@@ -71,13 +71,35 @@ int Event_list::Exacute_event()
 		while ( (j<opNum) && (list_op[j].op_num!=list[Num-1].operation) )
 			j++;
 		
-		if (j==opNum) return //
+		if (j==opNum) return ERR_EVENT_NOT_REGISTED;
 		
+		list_op[j].fp(list[Num-1].para[1],list[Num-1].para2);
 		
 		memset(list[Num-1],sizeof(list[Num-1]),0);
 		Num--;
 	}
 }
 
+int Event_List::Regist_Event(int (fun_add*) (int para1,int para2), byte opera)
+{
+	if (opNum==MAXOPNUM) return //
+	
+	int i,j;
+	for (i=0; i<opNum; i++)
+		if (opera==list_op[i].op_num) break;
+	
+	if (opera==list_op[i].op_num)
+	{
+		list_op[i].fp=fun_add;
+	};
+	else
+	{
+		list_op[opNum].op_num=opera;
+		list_op[opNum].fp=fun_add;
+		opNum++;
+	};
+	
+	return 0;
+}
 
 
