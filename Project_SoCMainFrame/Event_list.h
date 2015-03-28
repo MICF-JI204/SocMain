@@ -12,7 +12,7 @@ class Event_List
 {
 	public:
 		int Add_Event();     // haven't complete;
-		int Execute_Event(); // Execute One Event
+		int Exacute_Event(); // Execute One Event
 		int Regist_Event();// haven't complete;
 		
 	private:
