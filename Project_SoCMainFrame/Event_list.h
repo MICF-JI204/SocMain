@@ -23,7 +23,7 @@ class Event_List
 		int Add_Event(struct Event* AddOne);     // here is the pointer;
 		int Add_Event(byte a,byte b,int c,int d);  // here is the exact data not the pointer
 		int Execute_Event(); // Execute One Event
-		int Regist_Event(int (fun_add*) (int para1,int para2), byte opera);// regist an event 
+		int Regist_Event(byte opera,int (fun_add*) (int para1,int para2));// regist an event 
 		Event_List();
 		
 	private:
