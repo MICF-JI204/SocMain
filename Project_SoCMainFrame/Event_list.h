@@ -1,24 +1,28 @@
 #ifndef __Event_list_h__
 #define __Event_list_h__
 
+#define MAXEVENTNUM 20
+
 struct Event
 {
-	unsigned char priority;
-	unsigned char operation;
-	int part1,part2,part3,part4;
+	byte priority;
+	byte operation;
+	int para[4];
 };
 
 class Event_List
 {
 	public:
-		int Add_Event();     // haven't complete;
+		int Add_Event(struct Event* AddOne);     // here is the pointer;
+		int Add_Event(byte a,byte b,int c,int d,int e,int f);  // here is the exact data not the pointer
 		int Execute_Event(); // Execute One Event
 		int Regist_Event();// haven't complete;
+		Event_List();
 		
 	private:
 		//unsigned char t_count;
 		//unsigned char t_pointer;
-		Event list[50];
+		struct Event list[MAXEVENTNUM];
 		unsigned char Num;
 		
 };
