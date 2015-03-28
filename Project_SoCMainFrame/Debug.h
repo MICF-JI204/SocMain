@@ -9,6 +9,7 @@ Header File for debugging purpose
 #define ERR_EVENT_LIST_OVERFLOW 0xf2
 #define ERR_REMOVE_EMPTY_LIST 0xf3
 #define ERR_TASK_LIST_DONE 0x00
+#define ERR_LIB_INIT_SEQ_OVERFLOW 0x01
 
 
 

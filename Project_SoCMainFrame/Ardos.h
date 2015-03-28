@@ -13,15 +13,13 @@
 #define MAX_INIT_LIB 10 //Maxium 10 libs to init
 #define ERRPTR (void*)(&errptr) // Error Pointer, Define for using as a constant
 
-struct OS_Status{
-	int systime; //System Time in milliseconds
-	byte task_list_count;// Number of current task lists
-	Task_List* tlist[MAX_TASK_LIST]; //instantiate a mission list
-	byte task_list_count;//how many inits?
-	int (*to_init)()[MAX_INIT_LIB];//libs to init after initialization
-};
-				
-extern struct OS_Status os_status;
+extern byte task_list_count;	// Number of current task lists	
+extern byte lib_init_count;	//how many inits?
+extern int systime; //System Time in milliseconds
+extern Task_List* tlist[MAX_TASK_LIST]; //instantiate a mission list	
+extern int (*to_init)()[MAX_INIT_LIB];//libs to init after initialization
+
+extern struct  ;
 extern char errptr;
 
 extern int os_init();
