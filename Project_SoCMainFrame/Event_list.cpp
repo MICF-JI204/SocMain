@@ -82,7 +82,7 @@ int Event_list::Exacute_event()
 
 int Event_List::Regist_Event(int (fun_add*) (int para1,int para2), byte opera)
 {
-	if (opNum==MAXOPNUM) return //
+	if (opNum==MAXOPNUM) return ERR_EVENT_RIGISTRY_OVERFLOWED;//
 	
 	int i,j;
 	for (i=0; i<opNum; i++)
