@@ -22,7 +22,7 @@ int os_run(){//the main cycle of the system
 	os_status.systime=millis();//Acquire System Time
 	
 	int* tevent=NULL; 
-	for(i=0;i<os_status.task_list_count;i++)
+	for(int i=0;i<os_status.task_list_count;i++)
 	{//Go Through Task List
 
 		do
@@ -33,7 +33,7 @@ int os_run(){//the main cycle of the system
 			   os_remove_task_list(i);//Dispose Number i Task
 			}else
 			{
-				event_list.addEvent(tevent);
+				event_list.Add_Event(tevent);
 			}
 		}
 		while(tevent!=NULL);
@@ -44,15 +44,21 @@ int os_run(){//the main cycle of the system
 }
 
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
-    if(os_status.tasklist_count==MAX_TASK_LIST-1) return ERR_LIST_TASK_LIST_OVERFLOW; 
+    if(os_status.task_list_count==MAX_TASK_LIST) return ERR_LIST_TASK_LIST_OVERFLOW; 
 	//if no more space in the list of task_list
-	os_status.task_list[os_status.tasklist_count]=ntask_list;	
+	os_status.tlist[os_status.task_list_count]=ntask_list;	
 	
 	
+<<<<<<< HEAD
 	//Initialize the tasklist for further usee
 	(ntask_list->task[0]).time_set=os_status.systime+(ntask_list->task[i]).time_step
+=======
+	//Initialize the tasklist for further use
+	ntask_list->t_pointer=0;
+	(ntask_list->task[0]).time_set=os_status.systime+(ntask_list->task[0]).time_step
+>>>>>>> origin/OS_Beta
 	//First term = Last term + time step
-	for(i=1;i < (ntask_list->t_count);i++){
+	for(int i=1;i < (ntask_list->t_count);i++){
 		(ntask_list->task[i]).time_set=(ntask_list->task[i-1]).time_set+(ntask_list->task[i]).time_step;
 	}//This term = Last term + time step
 	
