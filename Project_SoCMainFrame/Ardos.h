@@ -4,6 +4,7 @@
 #include "Task_list.h"
 #include "Event_list.h"
 #include "Debug.h"
+#include "lib/user_wifi.h"
 
 #define byte unsigned char
 
