@@ -49,8 +49,7 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 	os_status.task_list[os_status.tasklist_count]=ntask_list;	
 	
 	
-	//Initialize the tasklist for further use
-	ntask_list->t_pointer=0;
+	//Initialize the tasklist for further usee
 	(ntask_list->task[0]).time_set=os_status.systime+(ntask_list->task[i]).time_step
 	//First term = Last term + time step
 	for(i=1;i < (ntask_list->t_count);i++){
@@ -72,6 +71,11 @@ int os_remove_task_list(byte listnum,byte err_num){
 	os_status.taks_list_count--;
 	os_status.task_list[os_status.task_list_count]=NULL;
 	//Dispose the list
+	return 0;
+}
+
+int add_lib_init(int (*func)()){
+	if(os_status.)
 	return 0;
 }
 

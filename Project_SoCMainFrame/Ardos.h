@@ -9,13 +9,16 @@
 #define byte unsigned char
 
 #define MAX_TASK_LIST 10 // Maximum 10 task lists
-#define Max_TASK 5   // Maximum 5 tasks in EACH list
+#define MAX_TASK 5   // Maximum 5 tasks in EACH list
+#define MAX_INIT_LIB 10 //Maxium 10 libs to init
 #define ERRPTR (void*)(&errptr) // Error Pointer, Define for using as a constant
 
 struct OS_Status{
 	int systime; //System Time in milliseconds
 	byte task_list_count;// Number of current task lists
-	Task_List* tlist[10]; //instantiate a mission list
+	Task_List* tlist[MAX_TASK_LIST]; //instantiate a mission list
+	byte task_list_count;//how many inits?
+	int (*to_init)()[MAX_INIT_LIB];//libs to init after initialization
 };
 				
 extern struct OS_Status os_status;
@@ -25,6 +28,7 @@ extern int os_init();
 extern int os_run();
 extern int os_add_tasklist();
 extern int os_remove_tasklist();
+extern int add_lib_init(int (*func)());
 extern Event_List event_list();
 
 #endif
