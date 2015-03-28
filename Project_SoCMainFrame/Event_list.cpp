@@ -7,7 +7,6 @@ Event_List::Event_List()
 		list[i].priority=0; 
 		list[i].operation=0;
 		list[i].para[0]=0; list[i].para[1]=0;
-		list[i].para[2]=0; list[i].para[3]=0;
 	}
 	NUM=0;
 	
@@ -20,22 +19,18 @@ int Event_List::Add_Event(struct Event* AddOne) //Add 1 event
 	list[Num].operation=AddOne->operation;
 	list[Num].para[0]=AddOne->para[0];
 	list[Num].para[1]=AddOne->para[1];
-	list[Num].para[2]=AddOne->para[2];
-	list[Num].para[3]=AddOne->para[3];
 	Num++;
 		
 	return 0;	
 }
 
-int Event_List::Add_Event(byte a,byte b,int c,int d,int e,int f); 
+int Event_List::Add_Event(byte a,byte b,int c,int d); 
 {
 	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW;
 	list[Num].priority=a;
 	list[Num].operation=b;
 	list[Num].para[0]=c;
 	list[Num].para[1]=d;
-	list[Num].para[2]=e;
-	list[Num].para[3]=f;
 	Num++;
 		
 	return 0;	
