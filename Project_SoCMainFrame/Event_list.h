@@ -2,6 +2,7 @@
 #define __Event_list_h__
 
 #define MAXEVENTNUM 20
+#define MAXOPNUM 50
 
 struct Event
 {
@@ -9,6 +10,12 @@ struct Event
 	byte operation;
 	int para[2];
 };
+
+struct oper
+{
+	byte op_num;
+	int (fp*) (int para1, int para2);
+}
 
 class Event_List
 {
@@ -20,11 +27,11 @@ class Event_List
 		Event_List();
 		
 	private:
-		//unsigned char t_count;
-		//unsigned char t_pointer;
 		struct Event list[MAXEVENTNUM];
-		unsigned char Num;
-		
+		byte Num;
+		byte opNum;
+		struct oper list_op[MAXOPNUM];
+
 };
 
 #endif
