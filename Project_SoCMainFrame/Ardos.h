@@ -5,7 +5,7 @@
 #include "Task_list.h"
 #include "Event_list.h"
 #include "Debug.h"
-#include "lib/user_wifi.h"
+#include "user_wifi.h"
 
 #define byte unsigned char
 #define SerialWifi Serial1 //which serial port the wifi is using?
@@ -22,9 +22,8 @@ extern byte task_list_count;	// Number of current task lists
 extern byte lib_init_count;	//how many inits?
 extern int systime; //System Time in milliseconds
 extern Task_List* tlist[MAX_TASK_LIST]; //instantiate a mission list	
-extern int (*to_init)()[MAX_INIT_LIB];//libs to init after initialization
+extern int (*(to_init[MAX_INIT_LIB]))();//libs to init after initialization
 
-extern struct  ;
 extern char errptr;
 
 extern int os_init();

@@ -8,7 +8,7 @@ Event_List::Event_List() // initialization
 		list[i].operation=0;
 		list[i].para[0]=0; list[i].para[1]=0;
 	}
-	NUM=0;
+	Num=0;
 	
 	for (int i=0; i<MAXOPNUM; i++)
 	{
@@ -31,7 +31,7 @@ int Event_List::Add_Event(struct Event* AddOne) //Add one event
 	return 0;	
 }
 
-int Event_List::Add_Event(byte a,byte b,int c,int d);  // directly add one event using data not a pointer 
+int Event_List::Add_Event(byte a,byte b,int c,int d)  // directly add one event using data not a pointer 
 {
 	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW;
 	list[Num].priority=a;
@@ -42,9 +42,9 @@ int Event_List::Add_Event(byte a,byte b,int c,int d);  // directly add one event
 		
 	return 0;	
 }
-}
 
-int Event_list::Execute_event()
+
+int Event_List::Execute_Event()
 {
 	if (Num==0) return 0;
 	
@@ -73,14 +73,15 @@ int Event_list::Execute_event()
 		
 		if (j==opNum) return ERR_EVENT_NOT_REGISTED;		// no operation found here 
 		
-		list_op[j].fp(list[Num-1].para[1],list[Num-1].para2);  // execute the operation
-		
-		memset(list[Num-1],sizeof(list[Num-1]),0);			// delete the event
+		list_op[j].fp(list[Num-1].para[0],list[Num-1].para[1]);  // execute the operation
+		//=======================NEED REFINEMENT========================
+		//memset(list[Num-1],sizeof(list[Num-1]),0);			// delete the event
+		//=======================NEED REFINEMENT========================
 		Num--;
 	}
 }
 
-int Event_List::Regist_Event(byte opera,int (fun_add*) (int para1,int para2))
+int Event_List::Regist_Event(byte opera,int (*fun_add) (int para1,int para2))
 {
 	if (opNum==MAXOPNUM) return ERR_EVENT_RIGISTRY_OVERFLOWED;//
 	
@@ -91,7 +92,7 @@ int Event_List::Regist_Event(byte opera,int (fun_add*) (int para1,int para2))
 	if (opera==list_op[i].op_num)
 	{
 		list_op[i].fp=fun_add;				// there is, then just change the pointer of the function
-	};
+	}
 	else
 	{
 		list_op[opNum].op_num=opera;		// create a new one

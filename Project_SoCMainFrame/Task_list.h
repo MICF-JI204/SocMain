@@ -1,5 +1,6 @@
 #ifndef __Task_list_h__
 #define __Task_list_h__
+#include "Ardos.h"
 
 struct Task{// Necessary Info of a specific Task
 	byte piority;
@@ -25,7 +26,9 @@ class Task_List{
 	private:
 		unsigned char t_count;//How Many Tasks?
 		unsigned char t_pointer;//Which Task Are We at?
-		struct Task task[MAX_TASK];//MAX_TASK of tasks
+		//=======================NEED REFINEMENT========================
+		struct Task task[5];//MAX_TASK of tasks
+		//=======================NEED REFINEMENT========================
 	  
 };
 

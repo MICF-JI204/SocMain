@@ -1,6 +1,8 @@
 #ifndef __Event_list_h__
 #define __Event_list_h__
 
+#include "Ardos.h"
+
 #define MAXEVENTNUM 20   // maximum of the event list
 #define MAXOPNUM 50		// maximum of the operation list
 
@@ -14,16 +16,16 @@ struct Event
 struct oper				//struct of a operation 
 {
 	byte op_num;
-	int (fp*) (int para1, int para2);
-}
+	int (*fp) (int para1, int para2);
+};
 
 class Event_List
 {
 	public:
-		int Add_Event(struct Event* AddOne);     // here is the pointer;
+		int Add_Event(struct Event *AddOne);     // here is the pointer;
 		int Add_Event(byte a,byte b,int c,int d);  // here is the exact data not the pointer
 		int Execute_Event(); // Execute One Event
-		int Regist_Event(byte opera,int (fun_add*) (int para1,int para2));// regist an event 
+		int Regist_Event(byte opera,int (*fun_add) (int para1,int para2));// regist an event 
 		Event_List();
 		
 	private:
