@@ -4,8 +4,6 @@
 */
 #include "Ardos.h"
 
-struct  ;
-
 Event_List event_list;
 
 //===========OS_STATUS==========

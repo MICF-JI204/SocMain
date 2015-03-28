@@ -4,7 +4,7 @@
 
 class ESP_01{
 	ESP_01();
-	int init(); //This function CAN be blocking
+	int Init(); //This function CAN be blocking
 	//Functions Below cannot be blocking, 
 	//i.e. shouldn't contain a total delay() longer than 5ms
 	

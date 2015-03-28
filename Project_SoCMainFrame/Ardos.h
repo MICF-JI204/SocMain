@@ -1,12 +1,14 @@
 #ifndef __Ardos_h__
 #define __Ardos_h__
 
+#include "Arduino.h"
 #include "Task_list.h"
 #include "Event_list.h"
 #include "Debug.h"
 #include "lib/user_wifi.h"
 
 #define byte unsigned char
+#define SerialWifi Serial1 //which serial port the wifi is using?
 
 #define MAX_TASK_LIST 10 // Maximum 10 task lists
 #define MAX_TASK 5   // Maximum 5 tasks in EACH list
@@ -26,7 +28,9 @@ extern int os_init();
 extern int os_run();
 extern int os_add_tasklist();
 extern int os_remove_tasklist();
-extern int add_lib_init(int (*func)());
-extern Event_List event_list();
+extern int os_add_lib_init(int (*func)());
+extern int os_init_arduino();
+extern Event_List event_list;
+e
 
 #endif

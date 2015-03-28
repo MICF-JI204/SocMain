@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "Ardos.h"
 
 /*This is the Main File of Ardos.
@@ -14,7 +13,7 @@
 
 
 int os_init(){//Initialization process of the system
-  
+  os_init_arduino();
   for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
   return 0;
 }
@@ -51,7 +50,7 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 	
 	
 	//Initialize the tasklist for further usee
-	(ntask_list->task[0]).time_set=systime+(ntask_list->task[i]).time_step
+	(ntask_list->task[0]).time_set=systime+(ntask_list->task[0]).time_step
 	//First term = Last term + time step
 	for(int i=1;i < (ntask_list->t_count);i++){
 		(ntask_list->task[i]).time_set=(ntask_list->task[i-1]).time_set+(ntask_list->task[i]).time_step;
@@ -75,10 +74,20 @@ int os_remove_task_list(byte listnum,byte err_num){
 	return 0;
 }
 
-int add_lib_init(int (*func)()){
+int os_add_lib_init(int (*func)()){
 	if(lib_init_count==MAX_INIT_LIB) return ERR_LIB_INIT_SEQ_OVERFLOW
 	to_init[lib_init_count]=func;
 	lib_init_count++;
+	return 0;
+}
+
+int os_init_arduino(){
+	//Arduino Related Initialization
+	Serial.begin(9600);
+	delay(50);//wait for Serial to be ready
+	SerialWifi.begin(115200);
+	delay(50);//wait for Serial to be ready
+
 	return 0;
 }
 
