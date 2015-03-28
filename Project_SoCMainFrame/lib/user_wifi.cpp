@@ -11,7 +11,7 @@ ESP_01::Init(){//The Initialization of this library
 	delay(500);
 	//Establish a tcp/ip link
 	SerialWifi.Print("AT+CIPSTART=\"TCP\",\"192.168.4.104\",14204\n");
-	delay(5000);//waiting to establish a link
+	delay(5000);//waiting to establish a link 
 	SerialWifi.Print("AT+CIPSEND\n")//Entering Direct Link Mode
 	delay(500);
 	SerialWifi.Println(F("Geronimo\n"))//Geronimo!!!
