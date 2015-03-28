@@ -15,7 +15,7 @@
 
 int os_init(){//Initialization process of the system
   
-  for(int i=0;i<lib_init_count)
+  for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
   return 0;
 }
 
