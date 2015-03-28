@@ -27,7 +27,7 @@ int os_run(){//the main cycle of the system
 
 		do
 		{
-			tevent=(*(os_status.tlist[i])).getTask(os.status.systime);
+			tevent=(*(os_status.tlist[i])).getTask(os_status.systime);
 			if(tevent==ERRPTR)//No more Tasks In a task list
 			{
 			   os_remove_task_list(i);//Dispose Number i Task
@@ -40,7 +40,7 @@ int os_run(){//the main cycle of the system
 		
 	}
 	return 0;
-	event_list.Execute_Event():
+	event_list.Execute_Event();
 }
 
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
