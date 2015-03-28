@@ -10,6 +10,13 @@ Event_List::Event_List()
 	}
 	NUM=0;
 	
+	for (int i=0; i<MAXOPNUM; i++)
+	{
+		list_op[i].op_num=0;
+		list_op[i].fp=null;
+	}
+	opNum=0;
+	
 }
 
 int Event_List::Add_Event(struct Event* AddOne) //Add 1 event
@@ -45,7 +52,7 @@ int Event_list::Exacute_event()
 	int j;
 	struct Event swap;
 	
-	for (i=0; i<=Num-1; i++)
+	for (i=0; i<=Num-2; i++)
 		for (j=i+1; j<=Num-1; j++)
 			if (list[i].priority>list[j].priority)
 			{
@@ -55,13 +62,22 @@ int Event_list::Exacute_event()
 			}
 			
 	byte Mark;
-	Mark=list[Num].priority;
+	Mark=list[Num-1].priority;
 	
-	while ( (Num>0) && (Mark==list[Num].priority) )
+	while ( (Num>0) && (Mark==list[Num-1].priority) )
 	{
+		
+		j=0;
+		while ( (j<opNum) && (list_op[j].op_num!=list[Num-1].operation) )
+			j++;
+		
+		if (j==opNum) return //
 		
 		
 		memset(list[Num-1],sizeof(list[Num-1]),0);
 		Num--;
 	}
 }
+
+
+
