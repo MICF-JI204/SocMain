@@ -11,8 +11,8 @@ Header File for debugging purpose
 #define ERR_TASK_LIST_DONE 0x00
 #define ERR_LIB_INIT_SEQ_OVERFLOW 0x01
 #define ERR_WIFI_CMD_NOT_READY 0x02
-#define ERR_EVENT_NOT_REGISTEERR_EVENT_RIGISTRY_OVERFLOWEDD 0x03
-#define  0x04
+#define ERR_EVENT_NOT_REGISTED 0x03
+#define ERR_EVENT_RIGISTRY_OVERFLOWED 0x04
 
 
 //==================END_ERR_NUMBER===========

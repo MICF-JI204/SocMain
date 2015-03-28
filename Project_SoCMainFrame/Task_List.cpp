@@ -1,5 +1,11 @@
 #include "Ardos.h"
 
+Task_List::Task_List(){
+	t_counter=0;
+	t_pointer=0;
+	disposefunc=NULL;
+}
+
 int Task_List::getTask(int systime){
 	if(t_pointer > t_counter) return ERRPTR;//No task left
 	if(task[t_pointer].time_set>systime) return NULL;//Time hasn't come yet
