@@ -16,7 +16,7 @@ int Wireless_Com::wInit(){//The Initialization of this library on wifi
 	
 	//Initialize the class 
     for(int i=0;i<COM_BUFFER_SIZE;i++)buffer[i]=0x0;
-	for(int i=0;i<COM_OUT_BUFFER_SIZE;i++)buffer[i]=0x0;
+	for(int i=0;i<COM_OUT_BUFFER_SIZE;i++)out_buffer[i]=0x0;
 	//Associate Operation With Functions using os_regsit_event
 	os_regist_event(OP_CHECK_COM,Wireless_Com::Get_Msg);
 	
@@ -55,7 +55,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	
 	//Initialize the class 
     for(int i=0;i<COM_BUFFER_SIZE;i++)buffer[i]=0x0;
-	for(int i=0;i<COM_OUT_BUFFER_SIZE;i++)buffer[i]=0x0;
+	for(int i=0;i<COM_OUT_BUFFER_SIZE;i++)out_buffer[i]=0x0;
 	//Associate Operation With Functions using os_regsit_event
 	os_regist_event(OP_CHECK_COM,Wireless_Com::Get_Msg);
 	
@@ -109,7 +109,10 @@ bool Wireless_Com::Check_Sum(){
 }
 
 int Wireless_Com::Distribute_Msg(){
-	//os_add_event((byte)buffer[1],(byte)buffer[2],buffer[3],buffer[4]);
+	int cache1,cache2;
+	part1=buffer[3]; part2=buffer[4]; Combine(); cache1=whole;
+	part1=buffer[5]; part2=buffer[6]; Combine(); cache2=whole;
+	os_add_event((byte)buffer[1],(byte)buffer[2],cache1,cache2);
 	return 0;
 }
 int Wireless_Com::DisposeFunc1(int ERRNUM){

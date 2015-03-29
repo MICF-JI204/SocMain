@@ -16,3 +16,8 @@ int (*to_init[MAX_INIT_LIB])()={NULL};//libs to init after initialization
 byte lib_init_count=0;	//how many inits?
 
 struct Task errptr={0,0,{0,0},0,0};
+
+
+//===========Attached(Combine,Devide)=====
+byte part1,part2={0,0};
+int whole=0;
