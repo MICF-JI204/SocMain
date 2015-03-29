@@ -18,7 +18,7 @@ int ESP_01::Init(){//The Initialization of this library
     for(int i=0;i<WIFI_BUFFER_SIZE;i++)buffer[i]=0x0;
 	
 	//Associate Operation With Functions using os_regsit_event
-	os_regist_event(OP_CHECK_WIFI,Get_Msg);
+	os_regist_event(OP_CHECK_WIFI,ESP_01::Get_Msg);
 	
 	//Generate Neccesary Task List
 	//Each Task Must Have 5 arguments
@@ -33,37 +33,37 @@ int ESP_01::Init(){//The Initialization of this library
 	//Can be used to create loops
 	task_list_wifi.disposeFunc=DisposeFunc1;
 	//At Last, Add the entire list to os using os_add_task_list
-	os_add_task_list(task_list_wifi);
+	os_add_task_list(&task_list_wifi);
 	//Then we are done!
 	
 	delay(3000); //Waiting the Wifi Module to be Ready
 	SerialWifi.print("+++");//Exit from direct link mode
 	delay(500);
 	//Establish a tcp/ip link
-	SerialWifi.Print("AT+CIPSTART=\"TCP\",\"192.168.4.104\",14204\n");
+	SerialWifi.print("AT+CIPSTART=\"TCP\",\"192.168.4.104\",14204\n");
 	delay(5000);//waiting to establish a link 
-	SerialWifi.Print("AT+CIPSEND\n")//Entering Direct Link Mode
+	SerialWifi.print("AT+CIPSEND\n");//Entering Direct Link Mode
 	delay(500);
-	SerialWifi.Println(F("Geronimo\n"))//Geronimo!!!
-	reply[]="RUCBAR\n"//Run U Clever Boy, And REMEMBER!
+	SerialWifi.println(F("Geronimo\n"));//Geronimo!!!
+	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
 	for(int i=0;i<7;i++)//7 as in the length of the array
 		if(SerialWifi.read()!=reply[i]) break; //Failed to init wifi
 	return 0;
 }
 
 int ESP_01::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETERS
-	if(SerialWifi.available()<BUFFER_SIZE)return ERR_WIFI_CMD_NOT_READY;
-	while(SerialWifi.available()>=BUFFER_SIZE){
+	if(SerialWifi.available()<WIFI_BUFFER_SIZE)return ERR_WIFI_CMD_NOT_READY;
+	while(SerialWifi.available()>=WIFI_BUFFER_SIZE){
 		if((buffer[0]=SerialWifi.read())!=WIFI_PACKAGE_HEADER)continue;//Header note reached
-		for(int i=1;i<BUFFER_SIZE;i++)buffer[i]=SerialWifi.read();//read in rest of the message
-		if(CheckSum()==true)Distribute_Events();
+		for(int i=1;i<WIFI_BUFFER_SIZE;i++)buffer[i]=SerialWifi.read();//read in rest of the message
+		if(Check_Sum()==true)Distribute_Msg();
 	}
 }
 
 bool ESP_01::Check_Sum(){
   byte sum = 0;
-  for(i=0;i<WIFI_BUFFER_SIZE-1;i++)sum+=(byte)buffer[i];//checksum
-  return (sum == buffer[WIFI_BUFFER_SIZE-1]]);// return checksum result
+  for(int i=0;i<WIFI_BUFFER_SIZE-1;i++)sum+=(byte)buffer[i];//checksum
+  return (sum == buffer[WIFI_BUFFER_SIZE-1]);// return checksum result
 }
 
 int ESP_01::Distribute_Msg(){
@@ -71,5 +71,5 @@ int ESP_01::Distribute_Msg(){
 	return 0;
 }
 int ESP_01::DisposeFunc1(int ERRNUM){
-	os_add_task_list(task_list_wifi);//Adding back the same list
+	os_add_task_list(&task_list_wifi);//Adding back the same list
 }

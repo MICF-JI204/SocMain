@@ -22,7 +22,7 @@ class ESP_01{
 		            // It can not be CAN be blocking
 		            //Functions Below cannot be blocking, 
 		            //i.e. shouldn't contain a total delay() longer than 5ms
-		int Get_Msg(int,int);//Try Obtaining a(multiple) Wifi Command(s)
+		static int Get_Msg(int,int);//Try Obtaining a(multiple) Wifi Command(s)
 		static int DisposeFunc1(int);//Dispose function for task list 1
 		                      //The argument gives the reason for its disposal
 							  //Defined in debug.h
