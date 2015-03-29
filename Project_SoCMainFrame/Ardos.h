@@ -33,6 +33,11 @@ extern int os_remove_task_list(byte,int);
 extern int os_add_lib_init(int (*func)());
 extern int os_init_arduino();
 
+//=======LED_debug
+extern int os_debug_init();
+extern int os_debug_LED_blink(int a, int b);
+
+
 extern Event_List event_list;
 
 #endif
