@@ -40,7 +40,16 @@ extern int os_debug_LED_blink(int a, int b);
 //========Attached
 extern int Devide();
 extern int Combine();
+extern byte part1;
+extern byte part2;
+extern int whole;
 
 extern Event_List event_list;
+
+//=========for check
+//extern int For_check;
+//=========Bluetooth
+//extern Wireless_Com wireless_com;//Firstly, Define your module
+//extern Task_List task_list_com;
 
 #endif

@@ -11,6 +11,7 @@
 
 int os_init(){//Initialization process of the system
   os_init_arduino();
+  
   for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
   
   //regist all the operations 
@@ -78,6 +79,7 @@ int os_remove_task_list(byte listnum,int err_num){
 }
 
 int os_add_lib_init(int (*func)()){
+	
 	if(lib_init_count==MAX_INIT_LIB) return ERR_LIB_INIT_SEQ_OVERFLOW;
 	to_init[lib_init_count]=func;
 	lib_init_count++;

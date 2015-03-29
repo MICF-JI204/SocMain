@@ -19,5 +19,9 @@ struct Task errptr={0,0,{0,0},0,0};
 
 
 //===========Attached(Combine,Devide)=====
-byte part1,part2={0,0};
+byte part1=0;
+byte part2=0;
 int whole=0;
+
+//===========run for debug
+//int For_check=3000;

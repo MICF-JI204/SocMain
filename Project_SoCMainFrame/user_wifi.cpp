@@ -1,13 +1,17 @@
 #include "Ardos.h"
 
-Wireless_Com wireless_com();//Firstly, Define your module
+//===========bluetooth
+Wireless_Com wireless_com;//Firstly, Define your module
 Task_List task_list_com;
+
 //Define however amount of task lists you want 
 //Task_List task_list_com2;
 //Task_List task_list_com3;
 //.....
 //As Many As You Want, Initialize them below
 Wireless_Com::Wireless_Com(){
+	//os_debug_LED_blink(3000,500);
+	For_check=500;
 	os_add_lib_init((Wireless_Com::bInit)); // Add Initialization Function
 	return;
 }
@@ -77,6 +81,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	
 	delay(3000); //Waiting the Bluetooth Module to be Ready
 	SerialCom.println(F("Geronimo\n"));//Geronimo!!!
+	//os_debug_LED_blink(3000,500);
 	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
 	for(int i=0;i<7;i++)//7 as in the length of the array
 		if(SerialCom.read()!=reply[i]) break; //Failed to init bluetooth

@@ -77,6 +77,10 @@ int Event_List::Execute_Event()
 		//=======================NEED REFINEMENT========================
 		//memset(list[Num-1],sizeof(list[Num-1]),0);			// delete the event
 		//=======================NEED REFINEMENT========================
+		//The change has been made to make the program more perfect
+		
+		list[Num-1].priority=0; list[Num-1].operation=0;
+		list[Num-1].para[0]=0;  list[Num-1].para[1]=0;
 		Num--;
 	}
 }

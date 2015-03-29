@@ -13,6 +13,18 @@ int os_debug_LED_blink(int a, int b)
 	delay(a);
 	digitalWrite(LED_BUILTIN,LOW);
 	delay(b);
+	digitalWrite(LED_BUILTIN,HIGH);
+	delay(a);
+	digitalWrite(LED_BUILTIN,LOW);
+	delay(b);
+	digitalWrite(LED_BUILTIN,HIGH);
+	delay(a);
+	digitalWrite(LED_BUILTIN,LOW);
+	delay(b);
+	digitalWrite(LED_BUILTIN,HIGH);
+	delay(a);
+	digitalWrite(LED_BUILTIN,LOW);
+	delay(b);
 	
 	return 0;
 }
