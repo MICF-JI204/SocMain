@@ -12,6 +12,12 @@
 int os_init(){//Initialization process of the system
   os_init_arduino();
   for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
+  
+  //regist all the operations 
+  Regist_Event(1,&os_debug_LED_blink);
+  //================
+  
+  
   return 0;
 }
 
@@ -85,6 +91,10 @@ int os_init_arduino(){
 	SerialCom.begin(115200);
 	delay(50);//wait for Serial to be ready
 
+	//init for the LED_BUILTIN
+	os_debug_init();
+	//====================
+	
 	return 0;
 }
 
