@@ -16,7 +16,7 @@
 
 #define ERRPTR (&errptr) // Error Pointer, Define for using as a constan
 #define os_add_event event_list.Add_Event// A Macro for easy interface
-#define os_regist_event event_list.Add_Event// Another Macro for easy interface
+#define os_regist_event event_list.Regist_Event// Another Macro for easy interface
 
 extern byte task_list_count;	// Number of current task lists	
 extern byte lib_init_count;	//how many inits?

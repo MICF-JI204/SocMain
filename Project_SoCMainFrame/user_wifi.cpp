@@ -56,7 +56,7 @@ int ESP_01::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETER
 	while(SerialWifi.available()>=WIFI_BUFFER_SIZE){
 		if((buffer[0]=SerialWifi.read())!=WIFI_PACKAGE_HEADER)continue;//Header note reached
 		for(int i=1;i<WIFI_BUFFER_SIZE;i++)buffer[i]=SerialWifi.read();//read in rest of the message
-		if(Check_Sum()==true)Distribute_Msg();
+		if(ESP_01::Check_Sum()==true)ESP_01::Distribute_Msg();
 	}
 }
 

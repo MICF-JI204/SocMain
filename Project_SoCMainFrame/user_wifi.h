@@ -29,8 +29,8 @@ class ESP_01{
 	private:
 	    static int buffer[WIFI_BUFFER_SIZE];
 		//byte buffer_ptr;//buffer counter
-		bool Check_Sum();//Check the buffer whether it is valid
-		int Distribute_Msg();//Turn Msg Into Events/System Calls
+		static bool Check_Sum();//Check the buffer whether it is valid
+		static int Distribute_Msg();//Turn Msg Into Events/System Calls
 };
 
 #endif
