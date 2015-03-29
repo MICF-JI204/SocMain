@@ -37,6 +37,9 @@ extern int os_init_arduino();
 extern int os_debug_init();
 extern int os_debug_LED_blink(int a, int b);
 
+//========Attached
+extern int Devide();
+extern int Combine();
 
 extern Event_List event_list;
 
