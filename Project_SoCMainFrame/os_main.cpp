@@ -14,6 +14,7 @@ int os_init(){//Initialization process of the system
   
   for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
   
+  //os_debug_LED_blink(For_check,500);
   //regist all the operations 
   event_list.Regist_Event(1,&os_debug_LED_blink);
   //================
