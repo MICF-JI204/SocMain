@@ -109,7 +109,7 @@ bool Wireless_Com::Check_Sum(){
 }
 
 int Wireless_Com::Distribute_Msg(){
-	os_add_event((byte)buffer[1],(byte)buffer[2],buffer[3],buffer[4]);
+	//os_add_event((byte)buffer[1],(byte)buffer[2],buffer[3],buffer[4]);
 	return 0;
 }
 int Wireless_Com::DisposeFunc1(int ERRNUM){
