@@ -9,8 +9,8 @@ Event_List event_list;
 //===========OS_STATUS==========
 int systime; //System Time in milliseconds
 
-Task_List* tlist[MAX_TASK_LIST]={NULL}; //instantiate a task list	
-byte task_list_count=0;	// Number of current task lists	
+Task_List* thread_list[MAX_THREADS]={NULL}; //instantiate a task list	
+byte thread_count=0;	// Number of current task lists	
 
 int (*to_init[MAX_INIT_LIB])()={NULL};//libs to init after initialization
 byte lib_init_count=0;	//how many inits?

@@ -8,20 +8,20 @@
 #include "user_wifi.h"
 
 #define byte unsigned char
-#define SerialWifi Serial1 //which serial port the wifi is using?
+#define SerialCom Serial1 //which serial port the wifi is using?
 
-#define MAX_TASK_LIST 10 // Maximum 10 task lists
+#define MAX_THREADS 10 // Maximum 10 task lists
 #define MAX_TASK 5   // Maximum 5 tasks in EACH list
 #define MAX_INIT_LIB 10 //Maxium 10 libs to init
 
-#define ERRPTR (&errptr) // Error Pointer, Define for using as a constan
+#define ERRPTR (&errptr) // Error Pointer, Define for using as a constant
 #define os_add_event event_list.Add_Event// A Macro for easy interface
 #define os_regist_event event_list.Regist_Event// Another Macro for easy interface
 
-extern byte task_list_count;	// Number of current task lists	
+extern byte thread_count;	// Number of current task lists	
 extern byte lib_init_count;	//how many inits?
 extern int systime; //System Time in milliseconds
-extern Task_List* tlist[MAX_TASK_LIST]; //instantiate a mission list	
+extern Task_List* thread_list[MAX_THREADS]; //instantiate a mission list	
 extern int (*(to_init[MAX_INIT_LIB]))();//libs to init after initialization
 
 extern struct Task errptr;

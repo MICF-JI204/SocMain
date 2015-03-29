@@ -9,9 +9,6 @@
   (Multithresding)
 */
 
-
-
-
 int os_init(){//Initialization process of the system
   os_init_arduino();
   for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
@@ -22,12 +19,12 @@ int os_run(){//the main cycle of the system
 	systime=millis();//Acquire System Time
 	
 	struct Task* tevent=NULL; 
-	for(int i=0;i<task_list_count;i++)
+	for(int i=0;i<thread_count;i++)
 	{//Go Through Task List
 
 		do
 		{
-			tevent=(*(tlist[i])).getTask(systime);
+			tevent=(*(thread_list[i])).getTask(systime);
 			if(tevent==ERRPTR)//No more Tasks In a task list
 			{
 			   os_remove_task_list(i,ERR_TASK_LIST_DONE);//Dispose Number i Task
@@ -44,9 +41,9 @@ int os_run(){//the main cycle of the system
 }
 
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
-    if(task_list_count==MAX_TASK_LIST) return ERR_LIST_TASK_LIST_OVERFLOW; 
+    if(thread_count==MAX_THREADS) return ERR_LIST_TASK_LIST_OVERFLOW; 
 	//if no more space in the list of task_list
-	tlist[task_list_count]=ntask_list;	
+	thread_list[thread_count]=ntask_list;	
 	
 	
 	//Initialize the tasklist for further use
@@ -57,19 +54,19 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 	}//This term = Last term + time step
 	
 	
-	task_list_count++;
+	thread_count++;
 	return 0;
 }
 
 int os_remove_task_list(byte listnum,int err_num){
-	if(tlist[listnum]==NULL) return ERR_REMOVE_EMPTY_LIST;
-	int (*tfuncpt)(int)=(*tlist[listnum]).disposeFunc;
+	if(thread_list[listnum]==NULL) return ERR_REMOVE_EMPTY_LIST;
+	int (*tfuncpt)(int)=(*thread_list[listnum]).disposeFunc;
 	if(tfuncpt!=NULL)(*tfuncpt)(err_num);
 	//Try Disposing the functions,Make Sure Not NULL!!
-	tlist[listnum]=tlist[task_list_count]; 
+	thread_list[listnum]=thread_list[thread_count]; 
 	//Moving Foward the last list
-	task_list_count--;
-	tlist[task_list_count]=NULL;
+	thread_count--;
+	thread_list[thread_count]=NULL;
 	//Dispose the list
 	return 0;
 }
@@ -85,7 +82,7 @@ int os_init_arduino(){
 	//Arduino Related Initialization
 	Serial.begin(9600);
 	delay(50);//wait for Serial to be ready
-	SerialWifi.begin(115200);
+	SerialCom.begin(115200);
 	delay(50);//wait for Serial to be ready
 
 	return 0;
