@@ -91,7 +91,7 @@ int os_init_arduino(){
 	//Arduino Related Initialization
 	Serial.begin(9600);
 	delay(50);//wait for Serial to be ready
-	SerialCom.begin(115200);
+	SerialCom.begin(9600);
 	delay(50);//wait for Serial to be ready
 
 	//init for the LED_BUILTIN
