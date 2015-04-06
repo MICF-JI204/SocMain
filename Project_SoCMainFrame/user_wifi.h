@@ -29,11 +29,12 @@ class Wireless_Com{
 							  //Defined in debug.h
 		static int Send_Msg(byte,byte);
 		static byte out_buffer[COM_OUT_BUFFER_SIZE];//buffer for sending out msgs
-	private:
+
 	    static byte buffer[COM_BUFFER_SIZE];
 		//byte buffer_ptr;//buffer counter
 		static bool Check_Sum();//Check the buffer whether it is valid
 		static int Distribute_Msg();//Turn Msg Into Events/System Calls
+	private:
 };
 
 #endif

@@ -63,7 +63,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	//Associate Operation With Functions using os_regsit_event
 	os_regist_event(OP_CHECK_COM,Wireless_Com::Get_Msg);
 	
-	//Generate Neccesary Task List
+	//Generate Necessary Task List
 	//Each Task Must Have 5 arguments
 	//Use zero to fill the unused place
 	//Last argument for "How soon should it be called,in ms"
@@ -81,19 +81,53 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	//os_debug_LED_blink(500,500);
 	delay(3000); //Waiting the Bluetooth Module to be Ready
 	
-	for(;;)SerialCom.println(F("Geronimo\n"));//Geronimo!!!
+	for( int tt=0;tt<=1;tt++)
+	{
+	SerialCom.println(F("Geronimo\n"));//Geronimo!!!
+	//delay(500);
+	}
+	Serial.println("hh");
 	//os_debug_LED_blink(3000,500);
 	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
+	bool check=1;
+	byte sendso;
 	for(int i=0;i<7;i++)//7 as in the length of the array
-		if(SerialCom.read()!=reply[i]) break; //Failed to init bluetooth
+	{
+		while (SerialCom.available()<=0);
+		sendso=SerialCom.read();
+		SerialCom.println((char)sendso);
+		Serial.println(sendso);
+		check=check&&(SerialCom.read()==reply[i]); //Failed to init bluetooth
+	}
+	if (check) Serial.println(F("Yes")); else Serial.println(F("No"));
 	return 0;
 }
 
 int Wireless_Com::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETERS
+	Serial.println("get messag ing");
+	Serial.println(SerialCom.available());
 	if(SerialCom.available()<COM_BUFFER_SIZE)return ERR_COM_CMD_NOT_READY;
 	while(SerialCom.available()>=COM_BUFFER_SIZE){
-		if((buffer[0]=SerialCom.read())!=COM_PACKAGE_HEADER)continue;//Header note reached
-		for(int i=1;i<COM_BUFFER_SIZE;i++)buffer[i]=SerialCom.read();//read in rest of the message
+		Serial.println("================================");
+		Serial.println(SerialCom.available());
+		Wireless_Com::buffer[0]=SerialCom.read();
+		//byte tttt;
+		//tttt=SerialCom.read();
+		Serial.println(Wireless_Com::buffer[0]);
+	//	Serial.println(tttt);
+		Serial.println(Wireless_Com::buffer[0]-COM_PACKAGE_HEADER);	
+		//Serial.println(COM_PACKAGE_HEADER);
+		delay(1000);
+		
+		if(Wireless_Com::buffer[0]!=COM_PACKAGE_HEADER)continue;//Header note reached
+		Serial.println("HDsdsdfdfddfsdfSDF");
+		delay(3000);
+		for(int i=1;i<COM_BUFFER_SIZE;i++)
+		{
+			delay(3000);
+			buffer[i]=SerialCom.read();//read in rest of the message
+			Serial.println(buffer[i]);
+		}
 		if(Wireless_Com::Check_Sum()==true)Wireless_Com::Distribute_Msg();
 	}
 }

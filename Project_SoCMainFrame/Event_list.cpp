@@ -66,6 +66,10 @@ int Event_List::Add_Event(byte a,byte b,int c,int d)  // directly add one event 
 
 int Event_List::Execute_Event()
 {
+	Serial.println("Event_list");
+	Serial.println(Num);
+	delay(1000);
+	
 	if (Num==0) return 0;
 	
 	int i;
@@ -103,6 +107,8 @@ int Event_List::Execute_Event()
 		list[Num-1].para[0]=0;  list[Num-1].para[1]=0;
 		Num--;
 	}
+	Serial.println("Event_list");
+	Serial.println(Num);
 }
 
 int Event_List::Regist_Event(byte opera,int (*fun_add) (int para1,int para2))

@@ -13,7 +13,7 @@ int os_init(){//Initialization process of the system
   os_init_arduino();
   
   for(int i=0;i<lib_init_count;i++) (*to_init[i])(); //Execute Each Init Functions
-  
+
   //os_debug_LED_blink(For_check,500);
   //regist all the operations 
   //================
@@ -24,7 +24,7 @@ int os_init(){//Initialization process of the system
 
 int os_run(){//the main cycle of the system
 	systime=millis();//Acquire System Time
-	
+
 	struct Task* tevent=NULL; 
 	for(int i=0;i<thread_count;i++)
 	{//Go Through Task List
@@ -56,6 +56,7 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 	//if no more space in the list of task_list
 	thread_list[thread_count]=ntask_list;	
 	
+	ntask_list->t_pointer=0;
 	
 	//Initialize the tasklist for further use
 	(ntask_list->task[0]).time_set=systime+(ntask_list->task[0]).time_step;
@@ -92,7 +93,7 @@ int os_add_lib_init(int (*func)()){
 
 int os_init_arduino(){
 	//Arduino Related Initialization
-	Serial.begin(9600);
+	Serial.begin(115200);
 	delay(50);//wait for Serial to be ready
 	SerialCom.begin(9600);
 	delay(50);//wait for Serial to be ready
