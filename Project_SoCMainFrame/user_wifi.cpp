@@ -11,7 +11,7 @@ Task_List task_list_com;
 //As Many As You Want, Initialize them below
 Wireless_Com::Wireless_Com(){
 	//os_debug_LED_blink(3000,500);
-	For_check=500;
+	//For_check=500;
 	os_add_lib_init((Wireless_Com::bInit)); // Add Initialization Function
 	return;
 }
@@ -78,9 +78,10 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	//At Last, Add the entire list to os using os_add_task_list
 	os_add_task_list(&task_list_com);
 	//Then we are done!
-	
+	//os_debug_LED_blink(500,500);
 	delay(3000); //Waiting the Bluetooth Module to be Ready
-	SerialCom.println(F("Geronimo\n"));//Geronimo!!!
+	
+	for(;;)SerialCom.println(F("Geronimo\n"));//Geronimo!!!
 	//os_debug_LED_blink(3000,500);
 	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
 	for(int i=0;i<7;i++)//7 as in the length of the array
