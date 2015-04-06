@@ -36,6 +36,7 @@ extern int os_init_arduino();
 //=======LED_debug
 extern int os_debug_init();
 extern int os_debug_LED_blink(int a, int b);
+extern int os_debug_LED1(int a, int b);
 
 //========Attached
 extern int Devide();

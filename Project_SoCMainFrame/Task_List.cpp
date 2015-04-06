@@ -7,7 +7,7 @@ Task_List::Task_List(){
 }
 
 struct Task* Task_List::getTask(int systime){
-	if(t_pointer > t_counter) return ERRPTR;//No task left
+	if(t_pointer >= t_counter) return ERRPTR;//No task left
 	if(task[t_pointer].time_set>systime) return NULL;//Time hasn't come yet
 	// return first task then increases pointer
 	return &(task[t_pointer++]);
