@@ -16,7 +16,6 @@ int os_init(){//Initialization process of the system
   
   //os_debug_LED_blink(For_check,500);
   //regist all the operations 
-  event_list.Regist_Event(1,&os_debug_LED_blink);
   //================
   
   
@@ -32,7 +31,9 @@ int os_run(){//the main cycle of the system
 
 		do
 		{
+			if (i>=thread_count) break;
 			tevent=(*(thread_list[i])).getTask(systime);
+			if (tevent==0) break;
 			if(tevent==ERRPTR)//No more Tasks In a task list
 			{
 			   os_remove_task_list(i,ERR_TASK_LIST_DONE);//Dispose Number i Task
@@ -44,8 +45,10 @@ int os_run(){//the main cycle of the system
 		while(tevent!=NULL);
 		
 	}
-	return 0;
+
 	event_list.Execute_Event();
+	
+	return 0;
 }
 
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
@@ -71,7 +74,7 @@ int os_remove_task_list(byte listnum,int err_num){
 	int (*tfuncpt)(int)=(*thread_list[listnum]).disposeFunc;
 	if(tfuncpt!=NULL)(*tfuncpt)(err_num);
 	//Try Disposing the functions,Make Sure Not NULL!!
-	thread_list[listnum]=thread_list[thread_count]; 
+	thread_list[listnum]=thread_list[thread_count-1]; 
 	//Moving Foward the last list
 	thread_count--;
 	thread_list[thread_count]=NULL;

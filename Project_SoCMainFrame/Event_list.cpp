@@ -22,11 +22,21 @@ Event_List::Event_List() // initialization
 int Event_List::Add_Event(struct Task* AddOne) //Add one event
 {
 	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW; //
-	list[Num].priority=AddOne->priority;
-	list[Num].operation=AddOne->operation;
-	list[Num].para[0]=AddOne->para[0];
-	list[Num].para[1]=AddOne->para[1];
-	Num++;                              // one more event
+	
+	int j;
+	j=Num;
+	Num++;
+	while ( (j>0) && (list[j-1].priority>=AddOne->priority) )
+	{
+		list[j]=list[j-1];
+		j--;
+	}
+	
+	list[j].priority=AddOne->priority;
+	list[j].operation=AddOne->operation;
+	list[j].para[0]=AddOne->para[0];
+	list[j].para[1]=AddOne->para[1];
+	// one more event
 		
 	return 0;	
 }
@@ -34,11 +44,21 @@ int Event_List::Add_Event(struct Task* AddOne) //Add one event
 int Event_List::Add_Event(byte a,byte b,int c,int d)  // directly add one event using data not a pointer 
 {
 	if (Num==MAXEVENTNUM) return ERR_EVENT_LIST_OVERFLOW;
-	list[Num].priority=a;
-	list[Num].operation=b;
-	list[Num].para[0]=c;
-	list[Num].para[1]=d;
-	Num++;					// one more event
+	
+	int j;
+	j=Num;
+	Num++;
+	while ( (j>0) && ( list[j-1].priority>=a ) )
+	{
+		list[j]=list[j-1];
+		j--;
+	}
+	
+	list[j].priority=a;
+	list[j].operation=b;
+	list[j].para[0]=c;
+	list[j].para[1]=d;
+	//Num++;					// one more event
 		
 	return 0;	
 }
@@ -50,16 +70,16 @@ int Event_List::Execute_Event()
 	
 	int i;
 	int j;
-	struct Event swap;
+	//struct Event swap;
 	
-	for (i=0; i<=Num-2; i++)
+	/*for (i=0; i<=Num-2; i++)
 		for (j=i+1; j<=Num-1; j++)
 			if (list[i].priority>list[j].priority)
 			{
 				swap=list[i];
 				list[i]=list[j];
 				list[j]=swap;
-			}												//make it in order of priority
+			}		*/										//make it in order of priority
 			
 	byte Mark;
 	Mark=list[Num-1].priority;
