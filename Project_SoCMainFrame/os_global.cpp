@@ -17,6 +17,8 @@ byte lib_init_count=0;	//how many inits?
 
 struct Task errptr={0,0,{0,0},0,0};
 
+int over_time;
+
 
 //===========Attached(Combine,Devide)=====
 byte part1=0;

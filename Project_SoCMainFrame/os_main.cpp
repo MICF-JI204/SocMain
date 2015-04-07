@@ -26,6 +26,9 @@ int os_run(){//the main cycle of the system
 	systime=millis();//Acquire System Time
 
 	struct Task* tevent=NULL; 
+	
+	over_time=MAXINT;
+	
 	for(int i=0;i<thread_count;i++)
 	{//Go Through Task List
 

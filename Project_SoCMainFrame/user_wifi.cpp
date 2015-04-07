@@ -12,9 +12,13 @@ Task_List task_list_com;
 Wireless_Com::Wireless_Com(){
 	//os_debug_LED_blink(3000,500);
 	//For_check=500;
+	
 	os_add_lib_init((Wireless_Com::bInit)); // Add Initialization Function
 	return;
 }
+
+byte Wireless_Com::out_buffer[COM_OUT_BUFFER_SIZE]={0};
+byte Wireless_Com::buffer[COM_BUFFER_SIZE]={0};
 
 int Wireless_Com::wInit(){//The Initialization of this library on wifi
 	
@@ -86,7 +90,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	SerialCom.println(F("Geronimo\n"));//Geronimo!!!
 	//delay(500);
 	}
-	Serial.println("hh");
+	//Serial.println("hh");
 	//os_debug_LED_blink(3000,500);
 	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
 	bool check=1;
@@ -96,39 +100,44 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 		while (SerialCom.available()<=0);
 		sendso=SerialCom.read();
 		SerialCom.println((char)sendso);
-		Serial.println(sendso);
+		//Serial.println(sendso);
 		check=check&&(SerialCom.read()==reply[i]); //Failed to init bluetooth
 	}
-	if (check) Serial.println(F("Yes")); else Serial.println(F("No"));
+	//if (check) Serial.println(F("Yes")); else Serial.println(F("No"));
 	return 0;
 }
 
 int Wireless_Com::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETERS
-	Serial.println("get messag ing");
-	Serial.println(SerialCom.available());
+	//Serial.println("get messag ing");
+	//Serial.println(SerialCom.available());
 	if(SerialCom.available()<COM_BUFFER_SIZE)return ERR_COM_CMD_NOT_READY;
 	while(SerialCom.available()>=COM_BUFFER_SIZE){
-		Serial.println("================================");
-		Serial.println(SerialCom.available());
+		//Serial.println("================================");
+		//Serial.println(SerialCom.available());
 		Wireless_Com::buffer[0]=SerialCom.read();
 		//byte tttt;
 		//tttt=SerialCom.read();
-		Serial.println(Wireless_Com::buffer[0]);
+		//Serial.println(Wireless_Com::buffer[0]);
 	//	Serial.println(tttt);
-		Serial.println(Wireless_Com::buffer[0]-COM_PACKAGE_HEADER);	
+		//Serial.println(Wireless_Com::buffer[0]-COM_PACKAGE_HEADER);	
 		//Serial.println(COM_PACKAGE_HEADER);
-		delay(1000);
+		//delay(1000);
 		
 		if(Wireless_Com::buffer[0]!=COM_PACKAGE_HEADER)continue;//Header note reached
-		Serial.println("HDsdsdfdfddfsdfSDF");
-		delay(3000);
+		//Serial.println("HDsdsdfdfddfsdfSDF");
+		//delay(1000);
 		for(int i=1;i<COM_BUFFER_SIZE;i++)
 		{
-			delay(3000);
+			//delay(1000);
 			buffer[i]=SerialCom.read();//read in rest of the message
-			Serial.println(buffer[i]);
+			//Serial.println(buffer[i]);
 		}
-		if(Wireless_Com::Check_Sum()==true)Wireless_Com::Distribute_Msg();
+		if(Wireless_Com::Check_Sum()==true)
+		{
+		//	Serial.println("Check_OK");
+		//	delay(3000);
+			Wireless_Com::Distribute_Msg();
+		}
 	}
 }
 
@@ -144,7 +153,19 @@ int Wireless_Com::Send_Msg(byte op,byte arg){//TO REGIST IT,MUST ALWAYS HAVE 2 P
 
 bool Wireless_Com::Check_Sum(){
   byte sum = 0;
+ // Serial.println("++++++++++++++++++++++++");
+  //Serial.println(buffer[0]);
+  //Serial.println(buffer[1]);
+  //Serial.println(buffer[2]);
+  //Serial.println(buffer[3]);
+  //Serial.println(buffer[4]);
+  //Serial.println(buffer[5]);
+  //Serial.println(buffer[6]);
+  //Serial.println(buffer[7]);
+  //delay(3000);
   for(int i=0;i<COM_BUFFER_SIZE-1;i++)sum+=(byte)buffer[i];//checksum
+  //Serial.println(sum);
+  //delay(3000);
   return (sum == buffer[COM_BUFFER_SIZE-1]);// return checksum result
 }
 
@@ -152,6 +173,11 @@ int Wireless_Com::Distribute_Msg(){
 	int cache1,cache2;
 	part1=buffer[3]; part2=buffer[4]; Combine(); cache1=whole;
 	part1=buffer[5]; part2=buffer[6]; Combine(); cache2=whole;
+	//delay(1000);
+	//Serial.println("----------------------");
+	//Serial.println(cache1);
+	//Serial.println(cache2);
+	//delay(1000);
 	os_add_event((byte)buffer[1],(byte)buffer[2],cache1,cache2);
 	return 0;
 }

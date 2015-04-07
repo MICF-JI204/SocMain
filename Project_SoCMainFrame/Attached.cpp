@@ -9,6 +9,6 @@ int Devide()
 
 int Combine()
 {
-	whole=part1<<8+part2;
+	whole=(((int)part1)<<8)+(int)part2;
 	return 0;
 }

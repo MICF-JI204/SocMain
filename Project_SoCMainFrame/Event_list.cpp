@@ -66,9 +66,9 @@ int Event_List::Add_Event(byte a,byte b,int c,int d)  // directly add one event 
 
 int Event_List::Execute_Event()
 {
-	Serial.println("Event_list");
-	Serial.println(Num);
-	delay(1000);
+	//Serial.println("Event_list_____1");
+	//Serial.println(Num);
+	//delay(1000);
 	
 	if (Num==0) return 0;
 	
@@ -88,27 +88,42 @@ int Event_List::Execute_Event()
 	byte Mark;
 	Mark=list[Num-1].priority;
 	
-	while ( (Num>0) && (Mark==list[Num-1].priority) )      // for all events of the same priority
+	int temp1,temp2;
+	
+	while ( (Num>0) && (millis()<over_time) )// for all events of the same priority
 	{
 		
 		j=0;
 		while ( (j<opNum) && (list_op[j].op_num!=list[Num-1].operation) )
 			j++;											// finding the matching operation
 		
-		if (j==opNum) return ERR_EVENT_NOT_REGISTED;		// no operation found here 
+		if (j==opNum) return ERR_EVENT_NOT_REGISTED;	
 		
-		list_op[j].fp(list[Num-1].para[0],list[Num-1].para[1]);  // execute the operation
+		//Serial.print("this operation:");
+		//Serial.println(list[Num-1].operation);
+		//delay(1000);
+		//Serial.print("this event number:");
+		//Serial.println(Num);
+		//delay(1000);
+		
+		
+		temp1=list[Num-1].para[0]; temp2=list[Num-1].para[1];
+		list[Num-1].priority=0; list[Num-1].operation=0;
+		list[Num-1].para[0]=0;  list[Num-1].para[1]=0;
+		Num--;
+			// no operation found here 
+		
+		list_op[j].fp(temp1,temp2);  // execute the operation
+
+		temp1=0; temp2=0;
 		//=======================NEED REFINEMENT========================
 		//memset(list[Num-1],sizeof(list[Num-1]),0);			// delete the event
 		//=======================NEED REFINEMENT========================
 		//The change has been made to make the program more perfect
 		
-		list[Num-1].priority=0; list[Num-1].operation=0;
-		list[Num-1].para[0]=0;  list[Num-1].para[1]=0;
-		Num--;
 	}
-	Serial.println("Event_list");
-	Serial.println(Num);
+	//Serial.println("Event_list_______2");
+	//Serial.println(Num);
 }
 
 int Event_List::Regist_Event(byte opera,int (*fun_add) (int para1,int para2))

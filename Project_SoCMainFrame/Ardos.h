@@ -14,6 +14,8 @@
 #define MAX_TASK 5   // Maximum 5 tasks in EACH list
 #define MAX_INIT_LIB 10 //Maxium 10 libs to init
 
+#define MAXINT 2147483647;
+
 #define ERRPTR (&errptr) // Error Pointer, Define for using as a constant
 #define os_add_event event_list.Add_Event// A Macro for easy interface
 #define os_regist_event event_list.Regist_Event// Another Macro for easy interface
@@ -46,6 +48,8 @@ extern byte part2;
 extern int whole;
 
 extern Event_List event_list;
+
+extern int over_time;
 
 //=========for check
 //extern int For_check;
