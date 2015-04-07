@@ -3,7 +3,7 @@
 
 #include "Ardos.h"
 
-#define MAXEVENTNUM 20   // maximum of the event list
+#define MAXEVENTNUM 50   // maximum of the event list
 #define MAXOPNUM 50		// maximum of the operation list
 
 struct Event

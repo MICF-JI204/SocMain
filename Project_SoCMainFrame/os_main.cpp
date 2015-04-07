@@ -57,6 +57,8 @@ int os_run(){//the main cycle of the system
 int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
     if(thread_count==MAX_THREADS) return ERR_LIST_TASK_LIST_OVERFLOW; 
 	//if no more space in the list of task_list
+	for (int i=0; i<thread_count; i++) 
+		if (thread_list[i]==ntask_list) return -1;
 	thread_list[thread_count]=ntask_list;	
 	
 	ntask_list->t_pointer=0;
@@ -102,7 +104,7 @@ int os_init_arduino(){
 	delay(50);//wait for Serial to be ready
 
 	//init for the LED_BUILTIN
-	os_debug_init();
+	//os_debug_init();
 	//====================
 	
 	return 0;

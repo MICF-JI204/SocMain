@@ -6,12 +6,14 @@
 #include "Event_list.h"
 #include "Debug.h"
 #include "user_wifi.h"
+#include "os_debug_buzzer.h"
+#include "os_debug_LED.h"
 
 #define byte unsigned char
 #define SerialCom Serial1 //which serial port the wifi is using?
 
 #define MAX_THREADS 10 // Maximum 10 task lists
-#define MAX_TASK 5   // Maximum 5 tasks in EACH list
+#define MAX_TASK 10   // Maximum 10 tasks in EACH list
 #define MAX_INIT_LIB 10 //Maxium 10 libs to init
 
 #define MAXINT 2147483647;
@@ -36,9 +38,9 @@ extern int os_add_lib_init(int (*func)());
 extern int os_init_arduino();
 
 //=======LED_debug
-extern int os_debug_init();
-extern int os_debug_LED_blink(int a, int b);
-extern int os_debug_LED1(int a, int b);
+//extern int os_debug_init();
+//extern int os_debug_LED_blink(int a, int b);
+//extern int os_debug_LED1(int a, int b);
 
 //========Attached
 extern int Devide();
