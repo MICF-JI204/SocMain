@@ -1,9 +1,8 @@
+#include "Ardos.h"
 void setup() {
-  // put your setup code here, to run once:
-
+	os_init();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  os_run();
 }
