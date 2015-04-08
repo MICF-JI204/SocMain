@@ -44,8 +44,7 @@ int os_run(){//the main cycle of the system
 			{
 				event_list.Add_Event(tevent);
 			}
-		}
-		while(tevent!=NULL);
+		}while(tevent!=NULL);
 		
 	}
 
@@ -78,13 +77,17 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 int os_remove_task_list(byte listnum,int err_num){
 	if(thread_list[listnum]==NULL) return ERR_REMOVE_EMPTY_LIST;
 	int (*tfuncpt)(int)=(*thread_list[listnum]).disposeFunc;
-	if(tfuncpt!=NULL)(*tfuncpt)(err_num);
-	//Try Disposing the functions,Make Sure Not NULL!!
+	
+	
 	thread_list[listnum]=thread_list[thread_count-1]; 
 	//Moving Foward the last list
 	thread_count--;
 	thread_list[thread_count]=NULL;
 	//Dispose the list
+	
+	if(tfuncpt!=NULL)(*tfuncpt)(err_num);
+	//Try Disposing the functions,Make Sure Not NULL!!
+	
 	return 0;
 }
 
