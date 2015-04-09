@@ -7,7 +7,7 @@ struct Task{// Necessary Info of a specific Task
 	byte operation;
 	int para[2];
 	int time_step;
-	int time_set;
+	long int time_set;
 };
 
 class Task_List{

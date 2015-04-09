@@ -6,7 +6,7 @@
 #define OP_LED_ON 3
 #define OP_LED_OFF 4
 #define OP_LED_BLINK 1
-#define LED_IO 53
+#define LED_IO 7
 
 class LED_control
 {
