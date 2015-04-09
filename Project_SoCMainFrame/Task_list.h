@@ -13,7 +13,7 @@ struct Task{// Necessary Info of a specific Task
 class Task_List{
 	public:
 		Task_List();
-		struct Task *getTask(int systime); 
+		struct Task *getTask(long int systime); 
 		//Returning a pointer containing necceary arguments for an event
 		//Return NULL For NO_VALID_TASK
 		//Return ERRPTR For NO_MORE_ITEMS
