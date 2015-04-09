@@ -27,6 +27,7 @@ int Wireless_Com::wInit(){//The Initialization of this library on wifi
 	for(int i=0;i<COM_OUT_BUFFER_SIZE;i++)out_buffer[i]=0x0;
 	//Associate Operation With Functions using os_regsit_event
 	os_regist_event(OP_CHECK_COM,Wireless_Com::Get_Msg);
+
 	
 	//Generate Neccesary Task List
 	//Each Task Must Have 5 arguments
@@ -66,6 +67,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	for(int i=0;i<COM_OUT_BUFFER_SIZE;i++)out_buffer[i]=0x0;
 	//Associate Operation With Functions using os_regsit_event
 	os_regist_event(OP_CHECK_COM,Wireless_Com::Get_Msg);
+    os_regist_event(OP_SEND_CHECK_MSG,Wireless_Com::Send_Check_Msg);
 	
 	//Generate Necessary Task List
 	//Each Task Must Have 5 arguments
@@ -104,10 +106,8 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 		check=check&&(SerialCom.read()==reply[i]); //Failed to init bluetooth
 	}
 	//byte outout[4]={0xCC,0xF2,0x00,0xBE};
-	SerialCom.write((byte)0xCC);
-	SerialCom.write((byte)0xF2);
-	SerialCom.write((byte)0x00);
-	SerialCom.write((byte)0xBE);
+	os_add_event(10,OP_SEND_CHECK_MSG,0,0);
+
 	//if (check) Serial.println(F("Yes")); else Serial.println(F("No"));
 	return 0;
 }
@@ -141,11 +141,19 @@ int Wireless_Com::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PAR
 		{
 		//	Serial.println("Check_OK");
 		//	delay(3000);
-			byte outout[4]={0xCC,0xF2,0x00,0xBE};
-			SerialCom.write(outout,4);
+		
+			os_add_event(10,OP_SEND_CHECK_MSG,0,0);
+
 			Wireless_Com::Distribute_Msg();
 		}
 	}
+}
+
+int Wireless_Com::Send_Check_Msg(int a, int b)
+{
+	byte outout[4]={0xCC,0xF2,0x00,0xBE};
+	SerialCom.write(outout,4);
+	return 0;
 }
 
 int Wireless_Com::Send_Msg(byte op,byte arg){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETERS

@@ -11,6 +11,7 @@
 */
 
 #define OP_CHECK_COM 0x10 //Define Operation
+#define OP_SEND_CHECK_MSG 0x11 //Define Operation 
 
 #define COM_BUFFER_SIZE 8 // Size of the buffer
 #define COM_OUT_BUFFER_SIZE 4// Size of Out Going Buffer
@@ -28,6 +29,7 @@ class Wireless_Com{
 		                      //The argument gives the reason for its disposal
 							  //Defined in debug.h
 		static int Send_Msg(byte,byte);
+		static int Send_Check_Msg(int, int);
 		static byte out_buffer[COM_OUT_BUFFER_SIZE];//buffer for sending out msgs
 
 	    static byte buffer[COM_BUFFER_SIZE];

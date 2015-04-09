@@ -101,9 +101,9 @@ int os_add_lib_init(int (*func)()){
 
 int os_init_arduino(){
 	//Arduino Related Initialization
-	Serial.begin(115200);
+	//Serial.begin(115200);
 	delay(50);//wait for Serial to be ready
-	SerialCom.begin(9600);
+	SerialCom.begin(115200);
 	delay(50);//wait for Serial to be ready
 
 	//init for the LED_BUILTIN
