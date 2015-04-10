@@ -83,16 +83,16 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	os_add_task_list(&task_list_com);
 	//Then we are done!
 	//os_debug_LED_blink(500,500);
-	delay(3000); //Waiting the Bluetooth Module to be Ready
+	//delay(3000); //Waiting the Bluetooth Module to be Ready
 	
-	for( int tt=0;tt<=1;tt++)
+	/*for( int tt=0;tt<=1;tt++)
 	{
 	SerialCom.println(F("Geronimo\n"));//Geronimo!!!
 	//delay(500);
-	}
+	}*/
 	//Serial.println("hh");
 	//os_debug_LED_blink(3000,500);
-	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
+	/*char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
 	bool check=1;
 	byte sendso;
 	for(int i=0;i<7;i++)//7 as in the length of the array
@@ -103,7 +103,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 		//Serial.println(sendso);
 		check=check&&(SerialCom.read()==reply[i]); //Failed to init bluetooth
 	}
-	//byte outout[4]={0xCC,0xF2,0x00,0xBE};
+	//byte outout[4]={0xCC,0xF2,0x00,0xBE};*/
 	SerialCom.write((byte)0xCC);
 	SerialCom.write((byte)0xF2);
 	SerialCom.write((byte)0x00);
