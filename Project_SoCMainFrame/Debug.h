@@ -14,7 +14,7 @@ Header File for debugging purpose
 #define ERR_EVENT_NOT_REGISTED 0x03
 #define ERR_EVENT_RIGISTRY_OVERFLOWED 0x04
 
-
+//所有的错误编码都记录在这里
 //==================END_ERR_NUMBER===========
 
 #endif

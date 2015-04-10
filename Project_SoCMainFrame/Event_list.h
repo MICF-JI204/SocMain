@@ -11,13 +11,13 @@ struct Event
 	byte priority;
 	byte operation;
 	int para[2];
-};
+};//存放event的结构体
 
 struct oper				//struct of a operation 
 {
 	byte op_num;
 	int (*fp) (int para1, int para2);
-};
+};//存放operation的结构体
 
 class Event_List
 {

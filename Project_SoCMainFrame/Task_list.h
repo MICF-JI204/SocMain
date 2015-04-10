@@ -8,7 +8,7 @@ struct Task{// Necessary Info of a specific Task
 	int para[2];
 	int time_step;
 	int time_set;
-};
+};//每个task的定义结构体
 
 class Task_List{
 	public:

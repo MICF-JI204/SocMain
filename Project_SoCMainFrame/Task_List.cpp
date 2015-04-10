@@ -3,7 +3,7 @@
 Task_List::Task_List(){
 	t_counter=0;
 	t_pointer=0;
-	disposeFunc=NULL;
+	disposeFunc=NULL;//再次说明凡是一个task_list它的disposefunction必须被写明确
 }
 
 struct Task* Task_List::getTask(int systime){
@@ -15,7 +15,7 @@ struct Task* Task_List::getTask(int systime){
 	}
 	// return first task then increases pointer
 	return &(task[t_pointer++]);
-}
+}//根据提供的系统时间获得可执行的任务
 
 int Task_List::addTask(byte priority,byte operation,int para0,int para1,int time_step){
 	if(t_counter==MAX_TASK)return ERR_TASK_LIST_OVERFLOW;//No spaces left
@@ -26,4 +26,4 @@ int Task_List::addTask(byte priority,byte operation,int para0,int para1,int time
 	task[t_counter].time_step=time_step;
 	t_counter++;
 	return 0;
-}
+}//在这个task_list中增加一个task

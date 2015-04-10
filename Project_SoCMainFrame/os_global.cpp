@@ -3,7 +3,7 @@
    Usage See "Ardos.h"
 */
 #include "Ardos.h"
-
+//本文旨在描述所有的global函数。
 Event_List event_list;
 
 //===========OS_STATUS==========
@@ -19,11 +19,7 @@ struct Task errptr={0,0,{0,0},0,0};
 
 int over_time;
 
-
 //===========Attached(Combine,Devide)=====
 byte part1=0;
 byte part2=0;
 int whole=0;
-
-//===========run for debug
-//int For_check=3000;
