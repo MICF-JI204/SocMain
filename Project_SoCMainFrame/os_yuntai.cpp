@@ -2,14 +2,14 @@
 #include "os_yuntai.h"
 #include "Servo_MICF.h"
 
-Servo Yuntai;
+Servo Yuntai1;
 Service_Yuntai Yuntai;
 //Task_list yuntai_task_list;
 int time;
 
-Service_Yuntai::yuntai_control()
+Service_Yuntai::Service_Yuntai()
 {
-	os_add_lib_init(yuantai_init);
+	os_add_lib_init(&Service_Yuntai::yuntai_init);
 	return;
 }
 int Service_Yuntai::yuantai_init_left;
@@ -22,23 +22,23 @@ int Service_Yuntai::yuantai_init_left;
 	os_regist_event(yuntai_stop, Service_Yuntai::yuntai_stop);
 	return 0;
 }
-int yuntai_control::yuntai_right(int a)
+int Service_Yuntai::yuntai_right(int a)
 {
-	Yuntai.writeMIcroseconds(a);
+	Yuntai1.writeMIcroseconds(a);
 }
-int yuntai_control::yuntai_right_slowly(int a)
+int Service_Yuntai::yuntai_right_slowly(int a)
 {
-	Yuntai.writeMIcroseconds(a);
+	Yuntai1.writeMIcroseconds(a);
 }
-int yuntai_control::yuntai_left(int a)
+int Service_Yuntai::yuntai_left(int a)
 {
-	Yuntai.writeMIcroseconds(a);
+	Yuntai1.writeMIcroseconds(a);
 }
-int yuntai_control::yuntai_left_slowly(int a)
+int Service_Yuntai::yuntai_left_slowly(int a)
 {
-	Yuntai.writeMIcroseconds(a);
+	Yuntai1.writeMIcroseconds(a);
 }
-int yuntai_control::yuntai_stop(int a)
+int Service_Yuntai::yuntai_stop(int a)
 {
-	Yuntai.writeMIcroseconds(1500);
+	Yuntai1.writeMIcroseconds(1500);
 }
