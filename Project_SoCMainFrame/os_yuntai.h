@@ -10,12 +10,12 @@ class Service_Yuntai
 {
 public:
 	Service_Yuntai();
-	static int yuntai_init_left();
-	static int yuntai_right(int a);
-	static int yuntai_right_slowly(int a);
-	static int yuntai_left_slowly(int a);
-	static int yuntai_left(int a);
-	static int yuntai_stop(int a);
+	static int yuntai_init_quick();
+	static int yuntai_init_slow();
+	static int yuntai_init_stop();
+	static int yuntai_quick(int a,int b);
+	static int yuntai_slow(int a,int b);
+	static int yuntai_stop(int a,int b);
 
 private:
 };
