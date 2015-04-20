@@ -9,12 +9,12 @@ int time;
 
 Service_Yuntai::Service_Yuntai()
 {
-	os_add_lib_init(&Service_Yuntai::yuntai_init);
+	os_add_lib_init(&Service_Yuntai::yuntai_init_left);
 	return;
 }
-int Service_Yuntai::yuantai_init_left;
+int Service_Yuntai::yuntai_init_left()
 {
-	Yuntai.attach(yuntai_IO);
+	Yuntai1.attach(yuntai_IO);
 	os_regist_event(yuntai_left, Service_Yuntai::yuntai_left);
 	os_regist_event(yuntai_left, Service_Yuntai::yuntai_left_slowly);
 	os_regist_event(yuntai_left, Service_Yuntai::yuntai_right_slowly);
@@ -23,22 +23,22 @@ int Service_Yuntai::yuantai_init_left;
 	return 0;
 }
 int Service_Yuntai::yuntai_right(int a)
-{
-	Yuntai1.writeMIcroseconds(a);
+{a=1550;
+	Yuntai1.writeMicroseconds(a);
 }
 int Service_Yuntai::yuntai_right_slowly(int a)
-{
-	Yuntai1.writeMIcroseconds(a);
+{a=1510;
+	Yuntai1.writeMicroseconds(a);
 }
 int Service_Yuntai::yuntai_left(int a)
-{
-	Yuntai1.writeMIcroseconds(a);
+{a=1410;
+	Yuntai1.writeMicroseconds(a);
 }
 int Service_Yuntai::yuntai_left_slowly(int a)
-{
-	Yuntai1.writeMIcroseconds(a);
+{   a=1450;
+	Yuntai1.writeMicroseconds(a);
 }
 int Service_Yuntai::yuntai_stop(int a)
 {
-	Yuntai1.writeMIcroseconds(1500);
+	Yuntai1.writeMicroseconds(1500);
 }
