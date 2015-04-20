@@ -1,10 +1,11 @@
 #include "Ardos.h"
 #include "os_yuntai.h"
 #include "Servo_MICF.h"
+
 #define quick 0xE2 
 #define slow 0xE1
 #define stop 0xE3
-
+#define MIDPOINT 1500 
 
 Servo Yuntai1;
 Service_Yuntai Yuntai;
@@ -24,8 +25,8 @@ int Service_Yuntai::yuntai_init()
 }
 
 int Service_Yuntai::yuntai_quick(int a,int b)
-{ int c;
-	int x=1470;
+{   int c;
+	int x=MIDPOINT;
 	if(a==1)
 		 c=x-b;
 	if(a==2)
@@ -35,18 +36,16 @@ int Service_Yuntai::yuntai_quick(int a,int b)
 }
 int Service_Yuntai::yuntai_slow(int a,int b)
 {	int c;
-	int x=1470;
+	int x=MIDPOINT;
 	if(a==2)
-	c=x+b/10;
+	c=x+b/5;
     if(a==1)
-    c=x-b/10;
+    c=x-b/5;
 // 同上,但是这个慢
 	Yuntai1.writeMicroseconds(c);
 }
 
 int Service_Yuntai::yuntai_stop(int a,int b)
-{   
-  pinMode(13,OUTPUT);
-  digitalWrite(13,HIGH);
-	
+{  
+	Yuntai1.writeMicroseconds(MIDPOINT);	
 }
