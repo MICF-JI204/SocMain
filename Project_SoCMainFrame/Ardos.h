@@ -8,6 +8,7 @@
 #include "user_wifi.h"
 #include "os_debug_buzzer.h"
 #include "os_debug_LED.h"
+#include "Servo_MICF.h"
 
 #define byte unsigned char
 #define SerialCom Serial1 //which serial port the wifi is using?
