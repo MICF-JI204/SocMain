@@ -16,9 +16,6 @@ int Service_Yuntai::yuntai_init_left()
 {
 	Yuntai1.attach(yuntai_IO);
 	os_regist_event(yuntai_left, Service_Yuntai::yuntai_left);
-	os_regist_event(yuntai_left, Service_Yuntai::yuntai_left_slowly);
-	os_regist_event(yuntai_left, Service_Yuntai::yuntai_right_slowly);
-	os_regist_event(yuntai_right, Service_Yuntai::yuntai_right);
 	os_regist_event(yuntai_stop, Service_Yuntai::yuntai_stop);
 	return 0;
 }
