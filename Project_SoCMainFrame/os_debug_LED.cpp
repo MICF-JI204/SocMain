@@ -25,8 +25,8 @@ int LED_control::LED_init()
 
 	pinMode(LED_IO,OUTPUT);
 	digitalWrite(LED_IO,LOW);
-	pinMode(6,OUTPUT);
-	digitalWrite(6,LOW);
+	pinMode(13,OUTPUT);
+	digitalWrite(13,LOW);
 	
 	return 0;
 }
