@@ -1,46 +1,24 @@
+#ifndef __xipan_h__
+#define __xipan_h__
+
 #include "Ardos.h"
-#include "xipan.h"
 
-#define d2slow 0xE6
-#define d2stop 0xE7
-Service_xipan xipan_shu;
 
-Service_xipan::Service_xipan()
+#define xipan_pin1 3
+#define xipan_pin2 4
+#define xipan_speed 11//请链接PWM 接口
+
+
+class Service_xipan
 {
-	os_add_lib_init(&Service_xipan::xipan_init);
-	return;
-}
-int Service_xipan::xipan_init()
-{
-	pinMode(xipan_pin1,OUTPUT);
-	pinMode(xipani_pin2,OUTPUT);
-	pinMode(xipan_speed,OUTPUT);
+public:
+	Service_xipan();
+	static int xipan_init();
 
-	os_regist_event(d2slow, &Service_xipan::xipan_move);
-	os_regist_event(d2stop, &Service_xipan::xipan_stop);
-	return 0;
-}
+	static int xipan_move(int a,int b);
+	static int xipan_stop(int a,int b);
 
+private:
+};
 
-int Service_xipan::xipan_move(int a,int b)
-{    
-	analogWrite(xipan_speed,a);//a 决定速度 
-	if(b==1)
-	{
-	digitalWrite(xipan_pin1,LOW);
-	digitalWrite(xipani_pin2,HIGH);
-	}
-	if(b==2)
-	{
-		digitalWrite(xipan_pin1,HIGH);
-	digitalWrite(xipan_pin2,LOW);
-	}//b值决定方向
-		
-		}
-		int Service_xipan::xipan_stop(int a,int b)
-{
-	
-	digitalWrite(xipan_pin1,HIGH);
-	digitalWrite(xipan_pin2,HIGH);
-
-		}
+#endif
