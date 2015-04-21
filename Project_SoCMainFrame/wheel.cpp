@@ -30,7 +30,7 @@ int Wheel_control::wheel_go_ahead(int a, int b)
 {
 	int temp;
 	temp=2*(b-128); 
-	if temp<0 temp=-temp;
+	if (temp<0) temp=-temp;
 	
 	if (a==0) 
 	{
