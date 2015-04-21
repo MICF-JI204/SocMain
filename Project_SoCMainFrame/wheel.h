@@ -8,11 +8,11 @@
 
 //#define OP_WHEEL_AHEAD &HC6
 //#define OP_WHEEL_BACK &HC7
-#define OP_WHEEL_GO &HA0
-#define OP_WHEEL_TURN_LEFT &HC0
-#define OP_WHEEL_TURN_RIGHT &HC1
-#define OP_WHEEL_STOP &HC4
-#define OP_WHEEL_GO_AHEAD &HC8
+#define OP_WHEEL_GO 160
+#define OP_WHEEL_TURN_LEFT 192
+#define OP_WHEEL_TURN_RIGHT 193
+#define OP_WHEEL_STOP 196
+#define OP_WHEEL_GO_AHEAD 200
 
 class Wheel_control
 {

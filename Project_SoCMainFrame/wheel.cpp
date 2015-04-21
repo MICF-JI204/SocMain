@@ -1,5 +1,6 @@
 #include "Ardos.h"
 #include "wheel.h"
+#include "Servo_MICF.h"
 
 Wheel_control wheel;
 
@@ -18,7 +19,7 @@ Wheel_control::Wheel_control()
 	return;
 }
 
-int Wheel_control::Wheel_init()
+int Wheel_control::wheel_init()
 {
 	os_regist_event(OP_WHEEL_GO,Wheel_control::wheel_go);
 	os_regist_event(OP_WHEEL_TURN_LEFT,Wheel_control::wheel_turn_left);
@@ -68,7 +69,7 @@ int Wheel_control::wheel_set(int a, int b)
 int Wheel_control::wheel_go_ahead(int a, int b)
 {
 	speed[a]=b;
-	motor[a].writeMicroseconds(900+4*b);
+	wheel_motor[a].writeMicroseconds(900+4*b);
 }
 
 int Wheel_control::wheel_go(int a, int b)
@@ -105,7 +106,7 @@ int Wheel_control::wheel_stop(int a, int b)
 {
 	speed[0]=128;
 	wheel.wheel_go(0,128);
-	speed[1]=128
+	speed[1]=128;
 	wheel.wheel_go(1,128);
 	
 	return 0;
