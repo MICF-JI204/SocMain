@@ -6,8 +6,9 @@
 #include "Event_list.h"
 #include "Debug.h"
 #include "user_wifi.h"
-#include "os_debug_buzzer.h"
-#include "os_debug_LED.h"
+//#include "os_debug_buzzer.h"
+//#include "os_debug_LED.h"
+#include "wheel.h"
 
 #define byte unsigned char
 #define SerialCom Serial //which serial port the wifi is using?

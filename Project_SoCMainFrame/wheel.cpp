@@ -25,6 +25,7 @@ int Wheel_control::wheel_init()
 	os_regist_event(OP_WHEEL_TURN_LEFT,Wheel_control::wheel_turn_left);
 	os_regist_event(OP_WHEEL_TURN_RIGHT,Wheel_control::wheel_turn_right);
 	os_regist_event(OP_WHEEL_STOP,Wheel_control::wheel_stop);
+	os_regist_event(OP_WHEEL_GO_AHEAD,Wheel_control::wheel_go_ahead);
 	
 	turn_back_left.addTask(17,OP_WHEEL_GO_AHEAD,0,100,0);
 	turn_back_left.addTask(17,OP_WHEEL_GO_AHEAD,0,128,0);
@@ -38,7 +39,7 @@ int Wheel_control::wheel_init()
 	
 	wheel_motor[0].attach(IO_LEFT_WHEEL);
 	wheel_motor[1].attach(IO_RIGHT_WHEEL);
-
+	
 	return 0;
 }
 
@@ -68,8 +69,13 @@ int Wheel_control::wheel_set(int a, int b)
 
 int Wheel_control::wheel_go_ahead(int a, int b)
 {
+	pinMode(13,OUTPUT);
+	digitalWrite(13,HIGH);
+	
 	speed[a]=b;
 	wheel_motor[a].writeMicroseconds(900+4*b);
+	
+	return 0;
 }
 
 int Wheel_control::wheel_go(int a, int b)
