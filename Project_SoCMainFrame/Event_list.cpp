@@ -97,7 +97,7 @@ int Event_List::Execute_Event()
 		while ( (j<opNum) && (list_op[j].op_num!=list[Num-1].operation) )
 			j++;											// finding the matching operation
 		
-		if (j==opNum) return ERR_EVENT_NOT_REGISTED;	
+			
 		
 		//Serial.print("this operation:");
 		//Serial.println(list[Num-1].operation);
@@ -111,6 +111,7 @@ int Event_List::Execute_Event()
 		list[Num-1].priority=0; list[Num-1].operation=0;
 		list[Num-1].para[0]=0;  list[Num-1].para[1]=0;
 		Num--;
+		if (j==opNum) return ERR_EVENT_NOT_REGISTED;
 			// no operation found here 
 		
 		list_op[j].fp(temp1,temp2);  // execute the operation
