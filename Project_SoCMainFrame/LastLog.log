@@ -1,0 +1,22 @@
+[0s]:Application Running Under
+D:\任立椋\JI\SocMain\Project_SoCMainFrame
+[0.015s]:System Begins to function!
+[0.015s]:Xbox Connected
+[7.953s]:COM4 Established
+[7.953s]:User:Closing Serial Port on COM4
+[10.953s]:User/Sending:
+CC B Crane_VStop 0 0 0 0 BE
+[11.359s]:User/Sending:
+CC B Crane_VStop 0 0 0 0 BE
+[11.812s]:User/Sending:
+CC 14 Yuntai_Stop 0 0 0 0 C3
+[12.062s]:User/Sending:
+CC 14 Yuntai_Stop 0 0 0 0 C3
+[12.594s]:User/Sending:
+CC B Crane_VStop 0 0 0 0 BE
+[14.437s]:Starting to UNLOAD
+[14.453s]:User/Sending:
+CC B GamePad_X_Up 0 0 0 0 8B
+[20.312s]:UNLOADING COMPLETE
+[20.328s]:User/Sending:
+CC B Loader_StopUnload 0 0 0 0 8C

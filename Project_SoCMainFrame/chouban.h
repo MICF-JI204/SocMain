@@ -4,8 +4,8 @@
 
 #include "Ardos.h"
 
-#define OP_chouban_ON 0xB0
-#define OP_chouban_OFF 0xB1
+#define OP_chouban_ON 0xB4
+#define OP_chouban_OFF 0xB5
 #define chouban_IO 10
 
 

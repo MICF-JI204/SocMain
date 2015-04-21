@@ -1,12 +1,6 @@
 #include "Ardos.h"
-
-
-chouban_control chouban_test;
-
-
-
-
- chouban_control::chouban_control()
+    chouban_control chouban_test;
+    chouban_control::chouban_control()
 {
 	os_add_lib_init(&chouban_control::chouban_init);
 
@@ -18,8 +12,7 @@ chouban_control chouban_test;
 {
  	os_regist_event(OP_chouban_ON,chouban_control::chouban_on);
 	os_regist_event(OP_chouban_OFF,chouban_control::chouban_off);
-    //pinMode(chouban_IO,OUTPUT);
-    //digitalWrite(chouban_IO,LOW);
+
 	pinMode(chouban_IO,OUTPUT);
 	digitalWrite(chouban_IO,LOW);
 

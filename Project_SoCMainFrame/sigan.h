@@ -8,7 +8,8 @@
 #define OP_sigan_ON 0xD0
 #define OP_sigan_OFF 0xD1
 #define OP_sigan_RON 0xD2
-//#define sigan_IO 53
+#define sigan_IO 8
+#define sigan_IOe 7
 
 
  class sigan_control
