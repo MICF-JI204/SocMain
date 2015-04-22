@@ -23,8 +23,8 @@ int Service_diaobi::diaobi_init()
 
 
 int Service_diaobi::diaobi_slow(int a,int b)
-{    a=a/4;
-	analogWrite(diaobi_speed,a);//a 决定速度 
+{  
+	analogWrite(diaobi_speed,a);
 	if(b==1)
 	{
 	digitalWrite(diaobi_pin1,LOW);
@@ -34,7 +34,7 @@ int Service_diaobi::diaobi_slow(int a,int b)
 	{
 		digitalWrite(diaobi_pin1,HIGH);
 	digitalWrite(diaobi_pin2,LOW);
-	}//b值决定方向
+	}
 		
 		}
 	int Service_diaobi::diaobi_stop(int a,int b)

@@ -24,7 +24,7 @@ int Service_xipan::xipan_init()
 
 int Service_xipan::xipan_move(int a,int b)
 { 
-	analogWrite(xipan_speed,a);//a 决定速度 
+	analogWrite(xipan_speed,a); 
 	if(b==1)
 	{
 	digitalWrite(xipan_pin1,LOW);
@@ -34,7 +34,7 @@ int Service_xipan::xipan_move(int a,int b)
 	{
 		digitalWrite(xipan_pin1,HIGH);
 	digitalWrite(xipan_pin2,LOW);
-	}//b值决定方向
+	}
 		
 		}
 		int Service_xipan::xipan_stop(int a,int b)

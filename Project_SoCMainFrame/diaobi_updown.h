@@ -4,8 +4,8 @@
 #include "Ardos.h"
 
 
-#define diaobi_pin1 7
-#define diaobi_pin2 8
+#define diaobi_pin1 5
+#define diaobi_pin2 6
 #define diaobi_speed 11
 
 
