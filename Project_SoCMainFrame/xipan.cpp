@@ -18,6 +18,7 @@ int Service_xipan::xipan_init()
 
 	os_regist_event(d2slow, &Service_xipan::xipan_move);
 	os_regist_event(d2stop, &Service_xipan::xipan_stop);
+	
 	return 0;
 }
 
@@ -35,12 +36,12 @@ int Service_xipan::xipan_move(int a,int b)
 		digitalWrite(xipan_pin1,HIGH);
 	digitalWrite(xipan_pin2,LOW);
 	}//b值决定方向
-		
+		return 0;
 		}
 		int Service_xipan::xipan_stop(int a,int b)
 {
 	
 	digitalWrite(xipan_pin1,HIGH);
 	digitalWrite(xipan_pin2,HIGH);
-
+	return 0;
 		}

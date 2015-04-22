@@ -18,29 +18,32 @@ int Service_diaobi::diaobi_init()
 
 	os_regist_event(d1slow, &Service_diaobi::diaobi_slow);
 	os_regist_event(d1stop, &Service_diaobi::diaobi_stop);
+	
 	return 0;
 }
 
 
 int Service_diaobi::diaobi_slow(int a,int b)
 {    a=a/4;
-	analogWrite(diaobi_speed,a);//a 决定速度 
+	analogWrite(diaobi_speed,a);//a 决定速度
+	
 	if(b==1)
 	{
 	digitalWrite(diaobi_pin1,LOW);
 	digitalWrite(diaobi_pin2,HIGH);
+	
 	}
 	if(b==2)
 	{
 		digitalWrite(diaobi_pin1,HIGH);
 	digitalWrite(diaobi_pin2,LOW);
 	}//b值决定方向
-		
+		return 0;
 		}
 	int Service_diaobi::diaobi_stop(int a,int b)
 {
 	
 	digitalWrite(diaobi_pin1,HIGH);
 	digitalWrite(diaobi_pin2,HIGH);
-
+	return 0;
 		}

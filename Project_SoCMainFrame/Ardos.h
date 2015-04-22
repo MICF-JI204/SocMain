@@ -15,7 +15,7 @@
 
 #define MAX_THREADS 10 // Maximum 10 task lists
 #define MAX_TASK 10   // Maximum 10 tasks in EACH list
-#define MAX_INIT_LIB 10 //Maxium 10 libs to init
+#define MAX_INIT_LIB 20 //Maxium 10 libs to init
 
 #define MAXINT 2147483647;
 

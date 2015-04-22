@@ -4,9 +4,9 @@
 #include "Ardos.h"
 
 
-#define diaobi_pin1 7
-#define diaobi_pin2 8
-#define diaobi_speed 11
+#define diaobi_pin1 40
+#define diaobi_pin2 42
+#define diaobi_speed 44
 
 
 class Service_diaobi
