@@ -93,7 +93,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 
 	}
 
-	char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
+	/*char reply[]="RUCBAR\n";//Run U Clever Boy, And REMEMBER!
 	bool check=1;
 	byte sendso;
 	for(int i=0;i<7;i++)//7 as in the length of the array
@@ -105,6 +105,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 	}
 	os_add_event(10,OP_SEND_CHECK_MSG,0,0);
 
+	*/
 	return 0;
 }
 
