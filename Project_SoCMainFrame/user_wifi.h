@@ -13,7 +13,7 @@
 #define OP_CHECK_COM 0x10 //Define Operation
 #define OP_SEND_CHECK_MSG 0x11 //Define Operation 
 
-#define COM_BUFFER_SIZE 8 // Size of the buffer
+#define COM_BUFFER_SIZE 9 // Size of the buffer
 #define COM_OUT_BUFFER_SIZE 4// Size of Out Going Buffer
 #define COM_PACKAGE_HEADER 0xCC
 class Wireless_Com{
