@@ -15,7 +15,7 @@ Service_Yuntai::Service_Yuntai()
 	os_add_lib_init(&Service_Yuntai::yuntai_init);
 	return;
 }
-long long int Service_Yuntai::yuntai_init()
+int Service_Yuntai::yuntai_init()
 {
 	Yuntai1.attach(yuntai_IO);
 	os_regist_event(quick, &Service_Yuntai::yuntai_quick);
@@ -24,9 +24,9 @@ long long int Service_Yuntai::yuntai_init()
 	return 0;
 }
 
-long long int Service_Yuntai::yuntai_quick(long long int a,long long int b)
-{   long long int c;
-	long long int x=MIDPOINT;
+int Service_Yuntai::yuntai_quick(int a,int b)
+{   int c;
+	int x=MIDPOINT;
 	if(a==1)
 		 c=x-b;
 	if(a==2)
@@ -34,9 +34,9 @@ long long int Service_Yuntai::yuntai_quick(long long int a,long long int b)
 	//请传入一个a,b, a正负决定方向，b 与 0的大小关系决定速度
 	Yuntai1.writeMicroseconds(c);
 }
-long long int Service_Yuntai::yuntai_slow(long long int a,long long int b)
-{	long long int c;
-	long long int x=MIDPOINT;
+int Service_Yuntai::yuntai_slow(int a,int b)
+{	int c;
+	int x=MIDPOINT;
 	if(a==2)
 	c=x+b/5;
     if(a==1)
@@ -45,7 +45,7 @@ long long int Service_Yuntai::yuntai_slow(long long int a,long long int b)
 	Yuntai1.writeMicroseconds(c);
 }
 
-long long int Service_Yuntai::yuntai_stop(long long int a,long long int b)
+int Service_Yuntai::yuntai_stop(int a,int b)
 {  
 	Yuntai1.writeMicroseconds(MIDPOINT);	
 }

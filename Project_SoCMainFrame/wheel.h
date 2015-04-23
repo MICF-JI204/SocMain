@@ -20,12 +20,12 @@ class Wheel_control
 {
 		public:
 			Wheel_control();
-			static long long int wheel_init();
-			static long long int wheel_go_ahead(long long int a, long long int b);
-			static long long int wheel_go(long long int a, long long int b);
-			static long long int wheel_turn_left(long long int a, long long int b);
-			static long long int wheel_turn_right(long long int a, long long int b);
-			static long long int wheel_stop(long long int a, long long int b);
+			static int wheel_init();
+			static int wheel_go_ahead(int a, int b);
+			static int wheel_go(int a, int b);
+			static int wheel_turn_left(int a, int b);
+			static int wheel_turn_right(int a, int b);
+			static int wheel_stop(int a, int b);
 		
 		private:
 	

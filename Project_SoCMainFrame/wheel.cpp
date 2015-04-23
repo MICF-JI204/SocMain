@@ -10,7 +10,7 @@ Wheel_control::Wheel_control()
 	return;
 }
 
-long long int Wheel_control::wheel_init()
+int Wheel_control::wheel_init()
 {
 	os_regist_event(OP_WHEEL_GO,Wheel_control::wheel_go);
 	os_regist_event(OP_WHEEL_TURN_LEFT,Wheel_control::wheel_turn_left);
@@ -26,9 +26,9 @@ long long int Wheel_control::wheel_init()
 	return 0;
 }
 
-long long int Wheel_control::wheel_go_ahead(long long int a, long long int b)
+int Wheel_control::wheel_go_ahead(int a, int b)
 {
-	long long int temp;
+	int temp;
 	temp=2*(b-128); 
 	if (temp<0) temp=-temp;
 	
@@ -74,7 +74,7 @@ long long int Wheel_control::wheel_go_ahead(long long int a, long long int b)
 	return 0;
 }
 
-long long int Wheel_control::wheel_go(long long int a, long long int b)
+int Wheel_control::wheel_go(int a, int b)
 {
 	wheel.wheel_go_ahead(0,a);
 	wheel.wheel_go_ahead(1,b);
@@ -82,7 +82,7 @@ long long int Wheel_control::wheel_go(long long int a, long long int b)
 	return 0;
 }
 
-long long int Wheel_control::wheel_turn_left(long long int a, long long int b)
+int Wheel_control::wheel_turn_left(int a, int b)
 {
 	wheel.wheel_go_ahead(0,64);  
 	wheel.wheel_go_ahead(1,192); 
@@ -90,7 +90,7 @@ long long int Wheel_control::wheel_turn_left(long long int a, long long int b)
 	return 0;
 }
 
-long long int Wheel_control::wheel_turn_right(long long int a, long long int b)
+int Wheel_control::wheel_turn_right(int a, int b)
 {
 	wheel.wheel_go_ahead(0,192);
 	wheel.wheel_go_ahead(1,64);
@@ -98,7 +98,7 @@ long long int Wheel_control::wheel_turn_right(long long int a, long long int b)
 	return 0;
 }
 
-long long int Wheel_control::wheel_stop(long long int a, long long int b)
+int Wheel_control::wheel_stop(int a, int b)
 {
 	wheel.wheel_go_ahead(0,128);
 	wheel.wheel_go_ahead(1,128);
