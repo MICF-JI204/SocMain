@@ -6,7 +6,7 @@ Task_List::Task_List(){
 	disposeFunc=NULL;
 }
 
-struct Task* Task_List::getTask(int systime){
+struct Task* Task_List::getTask(long int systime){
 	if(t_pointer >= t_counter) return ERRPTR;//No task left
 	if (task[t_pointer].time_set>systime) 
 	{

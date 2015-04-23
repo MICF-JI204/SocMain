@@ -63,10 +63,10 @@ int os_add_task_list(Task_List* ntask_list){//ntask_list as in New Task List
 	ntask_list->t_pointer=0;
 	
 	//Initialize the tasklist for further use
-	(ntask_list->task[0]).time_set=systime+(ntask_list->task[0]).time_step;
+	(ntask_list->task[0]).time_set=systime+(long int)(ntask_list->task[0]).time_step;
 	//First term = Last term + time step
 	for(int i=1;i < (ntask_list->t_counter);i++){
-		(ntask_list->task[i]).time_set=(ntask_list->task[i-1]).time_set+(ntask_list->task[i]).time_step;
+		(ntask_list->task[i]).time_set=(ntask_list->task[i-1]).time_set+(long int)(ntask_list->task[i]).time_step;
 	}//This term = Last term + time step
 	
 	

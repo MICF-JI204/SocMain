@@ -25,7 +25,7 @@
 
 extern byte thread_count;	// Number of current task lists	
 extern byte lib_init_count;	//how many inits?
-extern int systime; //System Time in milliseconds
+extern long int systime; //System Time in milliseconds
 extern Task_List* thread_list[MAX_THREADS]; //instantiate a mission list	
 extern int (*(to_init[MAX_INIT_LIB]))();//libs to init after initialization
 
@@ -52,7 +52,7 @@ extern int whole;
 
 extern Event_List event_list;
 
-extern int over_time;
+extern long int over_time;
 
 //=========for check
 //extern int For_check;
