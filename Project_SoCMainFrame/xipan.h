@@ -4,9 +4,9 @@
 #include "Ardos.h"
 
 
-#define xipan_pin1 34
-#define xipan_pin2 36
-#define xipan_speed 38//请链接PWM 接口
+#define xipan_pin1 42
+#define xipan_pin2 43
+#define xipan_speed 3//请链接PWM 接口
 
 
 class Service_xipan

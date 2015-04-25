@@ -28,9 +28,9 @@ int Service_Yuntai::yuntai_quick(int a,int b)
 {   int c;
 	int x=MIDPOINT;
 	if(a==1)
-		 c=x-b;
+		 c=x+b/5;
 	if(a==2)
-		c=x+b;
+		c=x-b/5;
 	//请传入一个a,b, a正负决定方向，b 与 0的大小关系决定速度
 	Yuntai1.writeMicroseconds(c);
 }
@@ -38,9 +38,9 @@ int Service_Yuntai::yuntai_slow(int a,int b)
 {	int c;
 	int x=MIDPOINT;
 	if(a==2)
-	c=x+b/5;
+	c=x-b/15;
     if(a==1)
-    c=x-b/5;
+    c=x+b/15;
 // 同上,但是这个慢
 	Yuntai1.writeMicroseconds(c);
 }

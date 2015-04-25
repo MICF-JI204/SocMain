@@ -24,7 +24,7 @@ int Service_diaobi::diaobi_init()
 
 
 int Service_diaobi::diaobi_slow(int a,int b)
-{    a=a/4;
+{    a=a;
 	analogWrite(diaobi_speed,a);//a 决定速度
 	
 	if(b==1)

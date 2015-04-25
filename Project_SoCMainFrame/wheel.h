@@ -3,12 +3,12 @@
 
 #include "Ardos.h"
 
-#define IO_LEFT_WHEEL_IN1 35
-#define IO_LEFT_WHEEL_IN2 37
-#define IO_LEFT_WHEEL_EN 39
-#define IO_RIGHT_WHEEL_IN1 41
-#define IO_RIGHT_WHEEL_IN2 43
-#define IO_RIGHT_WHEEL_EN 45
+#define IO_LEFT_WHEEL_IN1 30
+#define IO_LEFT_WHEEL_IN2 31
+#define IO_LEFT_WHEEL_EN 7
+#define IO_RIGHT_WHEEL_IN1 32
+#define IO_RIGHT_WHEEL_IN2 33
+#define IO_RIGHT_WHEEL_EN 6
 
 #define OP_WHEEL_GO 160
 #define OP_WHEEL_TURN_LEFT 192

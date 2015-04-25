@@ -115,6 +115,7 @@ int Wireless_Com::bInit(){//The Initialization of this library,As in bluetooth
 int Wireless_Com::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PARAMETERS
 	//Serial.println("get messag ing");
 	//Serial.println(SerialCom.available());
+
 	if(SerialCom.available()<COM_BUFFER_SIZE)return ERR_COM_CMD_NOT_READY;
 	while(SerialCom.available()>=COM_BUFFER_SIZE){
 		//Serial.println("================================");
@@ -131,6 +132,7 @@ int Wireless_Com::Get_Msg(int op1,int op2){//TO REGIST IT,MUST ALWAYS HAVE 2 PAR
 		if(Wireless_Com::buffer[0]!=COM_PACKAGE_HEADER)continue;//Header note reached
 		//Serial.println("HDsdsdfdfddfsdfSDF");
 		//delay(1000);
+
 		for(int i=1;i<COM_BUFFER_SIZE;i++)
 		{
 			//delay(1000);

@@ -5,8 +5,8 @@
 
 
 #define diaobi_pin1 40
-#define diaobi_pin2 42
-#define diaobi_speed 44
+#define diaobi_pin2 41 
+#define diaobi_speed 4
 
 
 class Service_diaobi
