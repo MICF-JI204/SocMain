@@ -20,10 +20,10 @@ int Wheel_control::wheel_init()
 	os_regist_event(OP_WHEEL_STOP,Wheel_control::wheel_stop);
 	os_regist_event(OP_WHEEL_GO_AHEAD,Wheel_control::wheel_go_ahead);
 
-	pinMode(IO_LEFT_WHEEL_IN1);
-	pinMode(IO_LEFT_WHEEL_IN2);
-	pinMode(IO_RIGHT_WHEEL_IN1);
-	pinMode(IO_RIGHT_WHEEL_IN2);
+	pinMode(IO_LEFT_WHEEL_IN1,OUTPUT);
+	pinMode(IO_LEFT_WHEEL_IN2,OUTPUT);
+	pinMode(IO_RIGHT_WHEEL_IN1,OUTPUT);
+	pinMode(IO_RIGHT_WHEEL_IN2,OUTPUT);
 	
 	digitalWrite(IO_LEFT_WHEEL_IN1,HIGH);
 	digitalWrite(IO_LEFT_WHEEL_IN2,HIGH);
