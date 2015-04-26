@@ -3,6 +3,8 @@
 
 Wheel_control wheel;
 
+Servo abcde;
+
 Wheel_control::Wheel_control()
 {
 	os_add_lib_init(&Wheel_control::wheel_init);
@@ -18,10 +20,23 @@ int Wheel_control::wheel_init()
 	os_regist_event(OP_WHEEL_STOP,Wheel_control::wheel_stop);
 	os_regist_event(OP_WHEEL_GO_AHEAD,Wheel_control::wheel_go_ahead);
 
+	pinMode(IO_LEFT_WHEEL_IN1);
+	pinMode(IO_LEFT_WHEEL_IN2);
+	pinMode(IO_RIGHT_WHEEL_IN1);
+	pinMode(IO_RIGHT_WHEEL_IN2);
+	
 	digitalWrite(IO_LEFT_WHEEL_IN1,HIGH);
 	digitalWrite(IO_LEFT_WHEEL_IN2,HIGH);
 	digitalWrite(IO_RIGHT_WHEEL_IN1,HIGH);
 	digitalWrite(IO_RIGHT_WHEEL_IN2,HIGH);
+	
+	//====================
+	os_regist_event(OP_ZZZZ,Wheel_control::zzzz);
+	//pinMode(IO_ZZZZ);
+	//digitalWrite(IO_ZZZZ,LOW);
+	abcde.attach(IO_ZZZZ);
+	abcde.write(0);
+	
 	
 	return 0;
 }
@@ -102,6 +117,13 @@ int Wheel_control::wheel_stop(int a, int b)
 {
 	wheel.wheel_go_ahead(0,128);
 	wheel.wheel_go_ahead(1,128);
+	
+	return 0;
+}
+
+int Wheel_control::zzzz(int a, int b)
+{
+	abcde.write(a);
 	
 	return 0;
 }
