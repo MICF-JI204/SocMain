@@ -35,7 +35,7 @@ int Wheel_control::wheel_init()
 	//pinMode(IO_ZZZZ);
 	//digitalWrite(IO_ZZZZ,LOW);
 	abcde.attach(IO_ZZZZ);
-	abcde.write(0);
+	abcde.write(60);
 	
 	
 	return 0;
