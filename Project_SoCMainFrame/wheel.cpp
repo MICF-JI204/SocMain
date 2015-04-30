@@ -3,7 +3,7 @@
 
 Wheel_control wheel;
 
-Servo abcde;
+//Servo abcde;
 
 Wheel_control::Wheel_control()
 {
@@ -31,11 +31,11 @@ int Wheel_control::wheel_init()
 	digitalWrite(IO_RIGHT_WHEEL_IN2,HIGH);
 	
 	//====================
-	os_regist_event(OP_ZZZZ,Wheel_control::zzzz);
+	//os_regist_event(OP_ZZZZ,Wheel_control::zzzz);
 	//pinMode(IO_ZZZZ);
 	//digitalWrite(IO_ZZZZ,LOW);
-	abcde.attach(IO_ZZZZ);
-	abcde.write(60);
+	//abcde.attach(IO_ZZZZ);
+	//abcde.write(60);
 	
 	
 	return 0;
@@ -121,9 +121,9 @@ int Wheel_control::wheel_stop(int a, int b)
 	return 0;
 }
 
-int Wheel_control::zzzz(int a, int b)
+/*int Wheel_control::zzzz(int a, int b)
 {
 	abcde.write(a);
 	
 	return 0;
-}
+}*/

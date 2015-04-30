@@ -17,8 +17,8 @@
 #define OP_WHEEL_GO_AHEAD 200
 
 
-#define IO_ZZZZ 12
-#define OP_ZZZZ 0x80
+//#define IO_ZZZZ 12
+//#define OP_ZZZZ 0x80
 
 
 class Wheel_control
@@ -31,7 +31,7 @@ class Wheel_control
 			static int wheel_turn_left(int a, int b);
 			static int wheel_turn_right(int a, int b);
 			static int wheel_stop(int a, int b);
-			static int zzzz(int a, int b);
+			//static int zzzz(int a, int b);
 		
 		private:
 	
