@@ -6,7 +6,9 @@
 
 #define OP_chouban_ON 0xB4
 #define OP_chouban_OFF 0xB5
-#define chouban_IO 26
+#define chouban_IO_EN 12
+#define chouban_IO_IN1 26
+#define chouban_IO_IN2 27
 
  class chouban_control
  {
