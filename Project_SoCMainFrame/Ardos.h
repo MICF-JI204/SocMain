@@ -11,7 +11,7 @@
 #include "Servo_MICF.h"
 
 #define byte unsigned char
-#define SerialCom Serial1 //which serial port the wifi is using?
+#define SerialCom Serial2 //which serial port the wifi is using?
 
 #define MAX_THREADS 10 // Maximum 10 task lists
 #define MAX_TASK 10   // Maximum 10 tasks in EACH list
