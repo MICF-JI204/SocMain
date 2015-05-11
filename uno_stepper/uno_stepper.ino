@@ -1,7 +1,12 @@
 #include <Stepper.h>
 
+#define Stepper_IO1 5
+#define Stepper_IO2 6
+#define Stepper_IO3 12
+#define Stepper_IO4 13
+
 int stepsPerRevolution = 200;
-int steps = 200;
+int steps = 100;
 Stepper myStepper(stepsPerRevolution,8,9,10,11);
 //int command;
 //int stopstepper = 1;
@@ -9,47 +14,44 @@ Stepper myStepper(stepsPerRevolution,8,9,10,11);
 
 void setup() {
 	//Serial.begin(9600);
-	myStepper.setSpeed(60);
-	pinMode(5,INPUT);
-	pinMode(6,INPUT);
-	pinMode(13,OUTPUT);
-	digitalWrite(13,LOW);
+	myStepper.setSpeed(90);
+	pinMode(3,INPUT);
+	pinMode(4,INPUT);
+
+	pinMode(Stepper_IO1,OUTPUT);
+	pinMode(Stepper_IO2,OUTPUT);
+	pinMode(Stepper_IO3,OUTPUT);
+	pinMode(Stepper_IO4,OUTPUT);
+	
+	digitalWrite(Stepper_IO1,LOW);
+	digitalWrite(Stepper_IO2,LOW);
+	digitalWrite(Stepper_IO3,LOW);
+	digitalWrite(Stepper_IO4,LOW);
+	
 	}
 
 void loop() {
-    //if (Serial.available() > 0){
-        //command = Serial.read();
-        /*
-        if(command == 'S'){
-	if (digitalRead(5) == 1){
-            stopstepper = 1;
-        }
-	else{
-	    stopstepper = 0;
-	}
-		if(command == 'U'){
-	if (digitalRead(6) == 0){
-            direct = 0;
-            stopstepper = 0;
-        }
-        if(command == 'D'){
-	else{
-            direct = 1;
-            stopstepper = 0;
-        }
-    }*/
+
     if(digitalRead(3)){
 		
-		digitalWrite(13,HIGH);
+		digitalWrite(Stepper_IO1,HIGH);
+		digitalWrite(Stepper_IO2,HIGH);
+		digitalWrite(Stepper_IO3,HIGH);
+		digitalWrite(Stepper_IO4,HIGH);
 		
-        if(digitalRead(4)){
-	    myStepper.step(steps);
-	}
-	else{
-	    myStepper.step(-steps);
-	}
+        if(digitalRead(4))
+		{
+			myStepper.step(steps);
+		}
+		else
+		{
+			myStepper.step(-steps);
+		}
 	
-	digitalWrite(13,LOW);
+		digitalWrite(Stepper_IO1,LOW);
+		digitalWrite(Stepper_IO2,LOW);
+		digitalWrite(Stepper_IO3,LOW);
+		digitalWrite(Stepper_IO4,LOW);
 	
     }
 }
