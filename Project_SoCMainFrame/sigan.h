@@ -8,8 +8,8 @@
 #define OP_sigan_ON 0xB1
 #define OP_sigan_OFF 0xB3
 #define OP_sigan_RON 0xB2
-#define sigan_IO 48
-#define sigan_IOe 49
+#define sigan_IO 52
+#define sigan_IOe 53
 
 
  class sigan_control

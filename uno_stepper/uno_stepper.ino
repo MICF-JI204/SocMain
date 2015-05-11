@@ -12,6 +12,8 @@ void setup() {
 	myStepper.setSpeed(60);
 	pinMode(5,INPUT);
 	pinMode(6,INPUT);
+	pinMode(13,OUTPUT);
+	digitalWrite(13,LOW);
 	}
 
 void loop() {
@@ -36,12 +38,18 @@ void loop() {
             stopstepper = 0;
         }
     }*/
-    if(digitalRead(5)){
-        if(digitalRead(6)){
+    if(digitalRead(3)){
+		
+		digitalWrite(13,HIGH);
+		
+        if(digitalRead(4)){
 	    myStepper.step(steps);
 	}
 	else{
 	    myStepper.step(-steps);
 	}
+	
+	digitalWrite(13,LOW);
+	
     }
 }
